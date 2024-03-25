@@ -24,6 +24,6 @@ class User extends Model
 
     public function Role() : BelongsTo
     {
-        return $this->BelongsTo(Role::class);
+        return $this->belongsTo(Role::class);
     }
 }
