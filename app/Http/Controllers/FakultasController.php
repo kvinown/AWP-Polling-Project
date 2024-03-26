@@ -12,7 +12,7 @@ class FakultasController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
