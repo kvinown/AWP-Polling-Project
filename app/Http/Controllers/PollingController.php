@@ -12,7 +12,10 @@ class PollingController extends Controller
      */
     public function index()
     {
-        //
+        $data = Polling::all();
+        return view('polling.index', [
+            'pols' => $data
+        ]);
     }
 
     /**

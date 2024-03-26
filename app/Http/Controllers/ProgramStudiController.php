@@ -12,7 +12,10 @@ class ProgramStudiController extends Controller
      */
     public function index()
     {
-        //
+        $data = ProgramStudi::all();
+        return view('program_studi.index', [
+            'progs' => $data
+        ]);
     }
 
     /**

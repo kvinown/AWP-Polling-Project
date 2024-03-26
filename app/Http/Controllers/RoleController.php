@@ -14,7 +14,7 @@ class RoleController extends Controller
     {
         $data = Role::all();
         return view('role.index', [
-            'roles' => $data;
+            'roles' => $data
         ]);
     }
 

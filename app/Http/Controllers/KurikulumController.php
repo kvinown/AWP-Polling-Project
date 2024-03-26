@@ -12,7 +12,10 @@ class KurikulumController extends Controller
      */
     public function index()
     {
-        //
+        $data = Kurikulum::all();
+        return view('kurikulum.index', [
+            'kurs' => $data
+        ]);
     }
 
     /**

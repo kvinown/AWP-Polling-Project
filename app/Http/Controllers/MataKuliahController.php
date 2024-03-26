@@ -12,7 +12,10 @@ class MataKuliahController extends Controller
      */
     public function index()
     {
-        //
+        $data = MataKuliah::all();
+        return view('mata_kuliah.index', [
+            'mks' => $data
+        ]);
     }
 
     /**
