@@ -10,8 +10,8 @@
     {{-- Navbar --}}
     {{-- Akhir Navbar --}}
 
-    {{-- Contemt --}}
-    {{-- Akhir Contemt --}}
+    {{-- Main Contemt --}}
+    {{-- Akhir Main Contemt --}}
 
     {{-- Footer --}}
     {{-- Akhir Footer --}}
