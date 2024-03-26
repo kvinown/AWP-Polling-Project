@@ -9,6 +9,10 @@
 <body>
     {{-- Navbar --}}
     {{-- Akhir Navbar --}}
+
+    {{-- Contemt --}}
+    {{-- Akhir Contemt --}}
+
     {{-- Footer --}}
     {{-- Akhir Footer --}}
 </body>
