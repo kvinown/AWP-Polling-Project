@@ -23,7 +23,7 @@ class PollingController extends Controller
      */
     public function create()
     {
-        //
+        return view('polling.create');
     }
 
     /**

@@ -23,7 +23,7 @@ class KurikulumController extends Controller
      */
     public function create()
     {
-        //
+        return view('kurikulum.create');
     }
 
     /**

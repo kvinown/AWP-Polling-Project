@@ -23,7 +23,7 @@ class ProgramStudiController extends Controller
      */
     public function create()
     {
-        //
+        return view('program_studi.create');
     }
 
     /**

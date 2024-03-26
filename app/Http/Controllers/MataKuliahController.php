@@ -23,7 +23,7 @@ class MataKuliahController extends Controller
      */
     public function create()
     {
-        //
+        return view('mata_kuliah.create');
     }
 
     /**
