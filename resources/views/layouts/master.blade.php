@@ -9,5 +9,7 @@
 <body>
     {{-- Navbar --}}
     {{-- Akhir Navbar --}}
+    {{-- Footer --}}
+    {{-- Akhir Footer --}}
 </body>
 </html>
