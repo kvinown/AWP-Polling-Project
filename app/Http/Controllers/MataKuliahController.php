@@ -63,6 +63,7 @@ class MataKuliahController extends Controller
      */
     public function destroy(MataKuliah $mataKuliah)
     {
-        //
+        $mataKuliah->delete();
+        return redirect(route('matakuliah-index'));
     }
 }

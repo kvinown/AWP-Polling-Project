@@ -63,6 +63,7 @@ class FakultasController extends Controller
      */
     public function destroy(Fakultas $fakultas)
     {
-        //
+        $fakultas -> delete();
+        return redirect(route('fakultas-index'));
     }
 }

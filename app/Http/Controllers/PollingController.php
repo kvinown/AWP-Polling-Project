@@ -63,6 +63,7 @@ class PollingController extends Controller
      */
     public function destroy(Polling $polling)
     {
-        //
+        $polling ->delete();
+        return redirect(route('polling-index'));
     }
 }

@@ -63,6 +63,7 @@ class PollingDetailContorller extends Controller
      */
     public function destroy(PollingDetail $pollingDetail)
     {
-        //
+        $pollingDetail->delete();
+        return redirect(route('pollingdetail-index'));
     }
 }

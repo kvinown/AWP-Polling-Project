@@ -63,6 +63,7 @@ class KurikulumController extends Controller
      */
     public function destroy(Kurikulum $kurikulum)
     {
-        //
+        $kurikulum ->delete();
+        return redirect(route('kurikulum-index'));
     }
 }
