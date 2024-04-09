@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('id_user', 10);
             $table->string('id_mata_kuliah', 10);
             $table->string('id_polling', 10);
-            $table->foreign('id_user')->references('id_user')->on('user')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign('id_user')->references('id')->on('akun')->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('id_mata_kuliah')->references('id_mata_kuliah')->on('mata_kuliah')->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('id_polling')->references('id_polling')->on('polling')->onUpdate('cascade')->onDelete('restrict');
         });
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('polling_detail');
+        Schema::dropIfExists('table_polling_detail');
     }
 };

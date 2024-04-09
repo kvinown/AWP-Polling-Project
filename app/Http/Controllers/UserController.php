@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -12,9 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $data = User::all();
         return view('user.index', [
-            'users' => $data
+            'users' => User::all()
         ]);
     }
 
@@ -31,7 +33,23 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'password' => ['required', 'confirmed'],
+            'role' => ['required', 'string']
+        ]);
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role' => $request->role
+        ]);
+
+
+
+        return redirect(route('user.index'));
     }
 
     /**
@@ -45,8 +63,7 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit
-    (User $user)
+    public function edit(User $user)
     {
         //
     }
@@ -64,7 +81,6 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        $user->delete();
-        return redirect(route('user-index'));
+        //
     }
 }

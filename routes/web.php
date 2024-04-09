@@ -71,9 +71,9 @@ Route::middleware('auth')->group(function () {
     Route::get('role-delete/{role}', [RoleController::class, 'destroy'])->name('role-delete');
 
     // User
-    Route::get('user-index', [UserController::class, 'index'])->name('user-index');
-    Route::get('user-create', [UserController::class, 'create'])->name('user-create');
-    Route::get('user-delete/{user}', [UserController::class, 'destroy'])->name('user-delete');
+    Route::get('akun-index', [UserController::class, 'index'])->name('akun-index');
+    Route::get('akun-create', [UserController::class, 'create'])->name('akun-create');
+    Route::get('akun-delete/{user}', [UserController::class, 'destroy'])->name('akun-delete');
 
 });
 
