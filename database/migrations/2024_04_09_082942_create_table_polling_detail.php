@@ -19,6 +19,8 @@ return new class extends Migration
             $table->foreign('id_user')->references('id')->on('akun')->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('id_mata_kuliah')->references('id_mata_kuliah')->on('mata_kuliah')->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('id_polling')->references('id_polling')->on('polling')->onUpdate('cascade')->onDelete('restrict');
+            $table->timestamp('updated_at');
+            $table->timestamp('created_at');
         });
     }
 
