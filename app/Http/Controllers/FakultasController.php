@@ -32,12 +32,12 @@ class FakultasController extends Controller
     public function store(Request $request)
     {
         $validedData = validator($request->all(), [
-            'id_fakultas' => 'required|string|max:10|unique:fakultas',
-            'nama_fakultas' => 'required|string|max:100'
+            'id' => 'required|string|max:10|unique:fakultas',
+            'nama' => 'required|string|max:100'
         ], [
-            'id_fakultas.unique' =>'ID Fakultas Sudah terdaftar',
-            'id_fakultas.required' =>'ID Fakultas harus diisi',
-            'nama_fakultas.required' =>'Nama Fakultas harus diisi',
+            'id.unique' =>'ID Fakultas Sudah terdaftar',
+            'id.required' =>'ID Fakultas harus diisi',
+            'nama.required' =>'Nama Fakultas harus diisi',
         ])->validate();
 
         $fakultas = new Fakultas($validedData);
@@ -69,12 +69,12 @@ class FakultasController extends Controller
     public function update(Request $request, Fakultas $fakultas)
     {
         $validatedData = validator($request->all(), [
-            'nama_fakultas' => 'required|string|max:100'
+            'nama' => 'required|string|max:100'
         ],[
-            'nama_fakultas.required' => 'Nama Fakultas harus di isi'
+            'nama.required' => 'Nama Fakultas harus di isi'
         ])->validate();
 
-        $fakultas -> nama_fakultas = $validatedData['nama_fakultas'];
+        $fakultas -> nama = $validatedData['nama'];
         $fakultas->save();
         return redirect(route('fakultas-index'));
     }

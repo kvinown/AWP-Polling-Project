@@ -13,13 +13,13 @@ class PollingDetail extends Model
     protected $table = 'polling_detail';
 
     protected $fillable = [
-        'id_polling_detail',
+        'id',
         'id_user',
         'id_mata_kuliah',
         'id_polling'
     ];
 
-    protected $primaryKey = 'id_polling_detail';
+    protected $primaryKey = 'id';
 
     public function User(): BelongsTo
     {

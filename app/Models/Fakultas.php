@@ -12,9 +12,9 @@ class Fakultas extends Model
     protected $table = 'fakultas';
 
     protected $fillable = [
-        'id_fakultas',
-        'nama_fakultas'
+        'id',
+        'nama'
     ];
 
-    protected $primaryKey = 'id_fakultas';
+    protected $primaryKey = 'id';
 }

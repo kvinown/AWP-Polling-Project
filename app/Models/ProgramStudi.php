@@ -13,12 +13,12 @@ class ProgramStudi extends Model
     protected $table = 'program_studi';
 
     protected $fillable = [
-        'id_program_studi',
-        'nama_program_studi',
+        'id',
+        'nama',
         'id_fakultas'
     ];
 
-    protected $primaryKey = 'id_program_studi';
+    protected $primaryKey = 'id';
 
     public  function Fakultas() : BelongsTo
     {

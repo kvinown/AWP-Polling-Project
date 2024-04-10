@@ -32,6 +32,16 @@
                 >
                 <a
                     class="nav-link active"
+                    href="{{route('fakultas-index')}}"
+                >Fakultas</a
+                >
+                <a
+                    class="nav-link active"
+                    href="{{route('programstudi-index')}}"
+                >Program Studi</a
+                >
+                <a
+                    class="nav-link active"
                     href="#"
                 >Hasil</a
                 >

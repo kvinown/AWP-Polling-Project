@@ -13,14 +13,14 @@ class MataKuliah extends Model
     protected $table = 'mata_kuliah';
 
     protected $fillable = [
-        'id_mata_kuliah',
-        'nama_mata_kuliah',
+        'id',
+        'nama',
         'sks',
         'id_kurikulum',
         'id_program_studi'
     ];
 
-    protected $primaryKey = 'id_mata_kuliah';
+    protected $primaryKey = 'id';
 
     public function Kurikulum() : BelongsTo
     {

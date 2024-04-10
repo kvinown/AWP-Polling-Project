@@ -12,13 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('mata_kuliah', function (Blueprint $table) {
-            $table->string('id_mata_kuliah', 10)->primary();
-            $table->string('nama_mata_kuliah', 100);
+            $table->string('id', 10)->primary();
+            $table->string('nama', 100);
             $table->integer('sks');
             $table->string('id_kurikulum', 10);
-            $table->foreign('id_kurikulum')->references('id_kurikulum')->on('kurikulum')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign('id_kurikulum')->references('id')->on('kurikulum')->onUpdate('cascade')->onDelete('restrict');
             $table->string('id_program_studi', 10);
-            $table->foreign('id_program_studi')->references('id_program_studi')->on('program_studi')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign('id_program_studi')->references('id')->on('program_studi')->onUpdate('cascade')->onDelete('restrict');
             $table->timestamp('updated_at');
             $table->timestamp('created_at');
         });

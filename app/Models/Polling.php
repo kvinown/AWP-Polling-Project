@@ -12,9 +12,9 @@ class Polling extends Model
     protected $table = 'polling';
 
     protected $fillable = [
-        'id_polling',
+        'id',
         'status'
     ];
 
-    protected $primaryKey = 'id_polling';
+    protected $primaryKey = 'id';
 }

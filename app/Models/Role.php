@@ -12,9 +12,9 @@ class Role extends Model
     protected  $table = 'role';
 
     protected  $fillable = [
-        'id_role',
-        'nama_role'
+        'id',
+        'nama'
     ];
 
-    protected $primaryKey = 'id_role';
+    protected $primaryKey = 'id';
 }

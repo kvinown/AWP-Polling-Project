@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password', 20);
             $table->string('id_role', 10);
-            $table->foreign('id_role')->references('id_role')->on('role')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign('id_role')->references('id')->on('role')->onUpdate('cascade')->onDelete('restrict');
         });
     }
 

@@ -22,8 +22,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Route::get('/dashboard', function () {
@@ -69,7 +72,10 @@ Route::middleware('auth')->group(function () {
     // Program Studi
     Route::get('programstudi-index', [ProgramStudiController::class, 'index'])->name('programstudi-index');
     Route::get('programstudi-create', [ProgramStudiController::class, 'create'])->name('programstudi-create');
+    Route::post('programstudi-store', [ProgramStudiController::class, 'store'])->name('programstudi-store');
     Route::get('programstudi-delete/{programStudi}', [ProgramStudiController::class, 'destroy'])->name('programstudi-delete');
+    Route::get('programstudi-edit/{programStudi}', [ProgramStudiController::class, 'edit'])->name('programstudi-edit');
+    Route::post('programstudi-update/{programStudi}', [ProgramStudiController::class, 'update'])->name('programstudi-update');
 
     // Role
     Route::get('role-index', [RoleController::class, 'index'])->name('role-index');

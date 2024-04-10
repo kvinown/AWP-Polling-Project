@@ -29,10 +29,10 @@
                     <tbody class="border border-dark">
                     @foreach($faks as $fak)
                         <tr>
-                            <td>{{$fak->id_fakultas}}</td>
-                            <td>{{$fak->nama_fakultas}}</td>
+                            <td>{{$fak->id}}</td>
+                            <td>{{$fak->nama}}</td>
                             <td>
-                                <a href="{{ route('fakultas-delete', ['fakultas' => $fak->id_fakultas]) }}" role="button" class="btn btn-danger" onclick="return confirmDelete()">
+                                <a href="{{ route('fakultas-delete', ['fakultas' => $fak->id]) }}" role="button" class="btn btn-danger" onclick="return confirmDelete()">
                                     <i class="fas fa-trash"></i>
                                 </a>
                                 <script>
@@ -42,7 +42,7 @@
                                 </script>
                             </td>
                             <td>
-                                <a href="{{ route('fakultas-edit', ['fakultas' => $fak->id_fakultas]) }}" role="button" class="btn btn-warning">
+                                <a href="{{ route('fakultas-edit', ['fakultas' => $fak->id]) }}" role="button" class="btn btn-warning">
                                     <i class="fas fa-edit"></i>
                                 </a>
                             </td>

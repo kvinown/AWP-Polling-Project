@@ -12,10 +12,10 @@ class Kurikulum extends Model
     protected $table = 'kurikulum';
 
     protected $fillable = [
-        'id_kurikulum',
+        'id',
         'tahun',
         'semester'
     ];
 
-    protected $primaryKey = 'id_kurikulum';
+    protected $primaryKey = 'id';
 }

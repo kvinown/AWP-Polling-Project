@@ -16,12 +16,12 @@
                     @csrf
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="id_fakultas">ID Fakultas</label>
-                            <input class="my-2 form-control" type="text" name="id_fakultas" id="id_fakultas" placeholder="ID Fakultas" required autofocus maxlength="10">
+                            <label for="id">ID Fakultas</label>
+                            <input class="my-2 form-control" type="text" name="id" id="id" placeholder="ID Fakultas" required autofocus maxlength="10">
                         </div>
                         <div class="form-group">
-                            <label for="nama_fakultas">Nama Fakultas</label>
-                            <input class="my-2 form-control" type="text" name="nama_fakultas" id="nama_fakultas" placeholder="Nama Fakultas" required autofocus maxlength="100">
+                            <label for="nama">Nama Fakultas</label>
+                            <input class="my-2 form-control" type="text" name="nama" id="nama" placeholder="Nama Fakultas" required autofocus maxlength="100">
                         </div>
                     </div>
                     <div class="card-footer">

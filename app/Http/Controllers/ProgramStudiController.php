@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Fakultas;
 use App\Models\ProgramStudi;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class ProgramStudiController extends Controller
     {
         $data = ProgramStudi::all();
         return view('program_studi.index', [
-            'progs' => $data
+            'progs' => $data,
+            'faks' => Fakultas::all()
         ]);
     }
 
@@ -23,7 +25,9 @@ class ProgramStudiController extends Controller
      */
     public function create()
     {
-        return view('program_studi.create');
+        return view('program_studi.create',[
+            'faks' => Fakultas::all()
+        ]);
     }
 
     /**
@@ -31,7 +35,21 @@ class ProgramStudiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = validator($request->all(), [
+            'id' => 'required|string|max:10|unique:program_studi',
+            'nama' => 'required|string|max:100',
+            'id_fakultas' => 'required|string|max:10',
+        ], [
+            'id.unique' => 'ID Program Studi sudah ada',
+            'id.required' => 'ID Program Studi harus di i',
+            'nama.required' => 'Nama Program Studi harus di isi',
+            'id_fakultas.required' => 'ID Fakultas harus di isi',
+            'id_fakultas.foreign' => 'ID Fakultas tidak ada',
+        ])->validated();
+
+        $programStudi = new ProgramStudi($validatedData);
+        $programStudi->save();
+        return redirect(route('programstudi-index'));
     }
 
     /**
@@ -39,7 +57,6 @@ class ProgramStudiController extends Controller
      */
     public function show(ProgramStudi $programStudi)
     {
-        //
     }
 
     /**
@@ -47,7 +64,10 @@ class ProgramStudiController extends Controller
      */
     public function edit(ProgramStudi $programStudi)
     {
-        //
+        return view('program_studi.edit', [
+            'prog' => $programStudi,
+            'faks' => Fakultas::all()
+        ]);
     }
 
     /**
@@ -55,7 +75,19 @@ class ProgramStudiController extends Controller
      */
     public function update(Request $request, ProgramStudi $programStudi)
     {
-        //
+        $validatedData = validator($request->all(), [
+            'nama' => 'required|string|max:100',
+            'id_fakultas' => 'required|string|max:10',
+        ], [
+            'nama.required' => 'Nama Program Studi harus di isi',
+            'id_fakultas.required' => 'ID Fakultas harus di isi',
+            'id_fakultas.foreign' => 'ID Fakultas tidak ada',
+        ])->validated();
+
+        $programStudi -> nama = $validatedData['nama'];
+        $programStudi -> id_fakultas = $validatedData['id_fakultas'];
+        $programStudi->save();
+        return redirect(route('programstudi-index'));
     }
 
     /**
@@ -64,6 +96,6 @@ class ProgramStudiController extends Controller
     public function destroy(ProgramStudi $programStudi)
     {
         $programStudi->delete();
-        return redirect(route('pollingdetail-index'));
+        return redirect(route('programstudi-index'));
     }
 }
