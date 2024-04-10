@@ -9,11 +9,11 @@
             <div class="card">
                 <div class="row d-flex">
                     <h5 class="card-title col-md">Data Fakultas</h5>
-                    <button
-                        type="button"
+                    <a
+                        href="{{route('fakultas-create')}}"
                         class="col-md-1 btn btn-primary ms-auto">
                         Tambah
-                    </button>
+                    </a>
                 </div>
                 <table
                     class="mt-2 table table-bordered"
@@ -22,6 +22,8 @@
                     <tr>
                         <th scope="col">ID Fakultas</th>
                         <th scope="col">Nama Fakultas</th>
+                        <th scope="col">Delete</th>
+                        <th scope="col">Edit</th>
                     </tr>
                     </thead>
                     <tbody class="border border-dark">
@@ -29,6 +31,22 @@
                         <tr>
                             <td>{{$fak->id_fakultas}}</td>
                             <td>{{$fak->nama_fakultas}}</td>
+                            <td>
+                                <a href="{{ route('fakultas-delete', ['fakultas' => $fak->id_fakultas]) }}" role="button" class="btn btn-danger" onclick="return confirmDelete()">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                                <script>
+                                    function confirmDelete() {
+                                        return confirm("Apakah Anda yakin menghapus data ini?");
+                                    }
+                                </script>
+                            </td>
+                            <td>
+                                <a href="{{ route('fakultas-edit', ['fakultas' => $fak->id_fakultas]) }}" role="button" class="btn btn-warning">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                            </td>
+
                         </tr>
                     @endforeach
                     </tbody>

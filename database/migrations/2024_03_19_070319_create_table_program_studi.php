@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('nama_program_studi', 100);
             $table->string('id_fakultas', 10);
             $table->foreign('id_fakultas')->references('id_fakultas')->on('fakultas')->onUpdate('cascade')->onDelete('restrict');
+            $table->timestamp('updated_at');
+            $table->timestamp('created_at');
         });
     }
 

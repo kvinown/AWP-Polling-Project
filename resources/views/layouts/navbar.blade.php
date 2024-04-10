@@ -3,7 +3,7 @@
         <a
             class="navbar-brand"
             href="#"
-        >Navbar</a
+        >{{Auth::user()->name}}</a
         >
         <button
             class="navbar-toggler"
@@ -22,12 +22,12 @@
                 <a
                     class="nav-link active"
                     aria-current="page"
-                    href="#"
+                    href="{{route('home')}}"
                 >Home</a
                 >
                 <a
                     class="nav-link active"
-                    href="#"
+                    href="{{route('matakuliah-index')}}"
                 >Polling Mata Kuliah</a
                 >
                 <a

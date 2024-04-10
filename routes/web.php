@@ -34,11 +34,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('home', function () {
+        return view('home');
+    })->name('home');
 
     // Fakultas
     Route::get('fakultas-index', [FakultasController::class, 'index'])->name('fakultas-index');
     Route::get('fakultas-create', [FakultasController::class, 'create'])->name('fakultas-create');
+    Route::post('fakultas-store', [FakultasController::class, 'store'])->name('fakultas-store');
     Route::get('fakultas-delete/{fakultas}', [FakultasController::class, 'destroy'])->name('fakultas-delete');
+    Route::get('fakultas-edit/{fakultas}', [FakultasController::class, 'edit'])->name('fakultas-edit');
+    Route::post('fakultas-update/{fakultas}', [FakultasController::class, 'update'])->name('fakultas-update');
 
     // Kurikulum
     Route::get('kurikulum-index', [KurikulumController::class, 'index'])->name('kurikulum-index');
