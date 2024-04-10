@@ -47,10 +47,11 @@
                 >
                 <form id="logoutForm" method="POST" action="{{ route('logout') }}">
                     @csrf
+                    <button type="submit" class="btn btn-danger">
+                        <i class="nav-icon fa fa-sign-out"></i> Logout
+                    </button>
                 </form>
-                <a href="javascript:void(0)" class="nav-link active btn btn-danger mx-1" onclick="$('#logoutForm').submit()">
-                    <i class="nav-icon fa fa-sign-out"></i> Logout
-                </a>
+
             </div>
         </div>
     </div>

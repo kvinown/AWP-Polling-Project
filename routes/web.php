@@ -25,8 +25,11 @@ use Illuminate\Support\Facades\Route;
 //Route::get('/', function () {
 //    return view('welcome');
 //});
+Route::get('/welcome', function () {
+    return view('welcome');
+});
 Route::get('/', function () {
-    return view('home');
+    return view('welcome');
 });
 
 Route::get('/dashboard', function () {
@@ -40,6 +43,7 @@ Route::middleware('auth')->group(function () {
     Route::get('home', function () {
         return view('home');
     })->name('home');
+    Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 
     // Fakultas
     Route::get('fakultas-index', [FakultasController::class, 'index'])->name('fakultas-index');
