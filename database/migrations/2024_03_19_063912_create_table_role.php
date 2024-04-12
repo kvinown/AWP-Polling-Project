@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('role', function (Blueprint $table) {
             $table->string('id', 10)->primary();
             $table->string('nama', 10);
-            $table->timestamp('updated_at');
-            $table->timestamp('created_at');
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
         });
 
         \Illuminate\Support\Facades\DB::table('role')->insert([

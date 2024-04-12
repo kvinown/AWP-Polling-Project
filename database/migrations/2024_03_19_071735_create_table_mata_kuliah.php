@@ -19,8 +19,8 @@ return new class extends Migration
             $table->foreign('id_kurikulum')->references('id')->on('kurikulum')->onUpdate('cascade')->onDelete('restrict');
             $table->string('id_program_studi', 10);
             $table->foreign('id_program_studi')->references('id')->on('program_studi')->onUpdate('cascade')->onDelete('restrict');
-            $table->timestamp('updated_at');
-            $table->timestamp('created_at');
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
         });
     }
 

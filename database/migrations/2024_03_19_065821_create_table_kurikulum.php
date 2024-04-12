@@ -15,8 +15,8 @@ return new class extends Migration
             $table->string('id', 10)->primary();
             $table->integer('tahun');
             $table->integer('semester');
-            $table->timestamp('updated_at');
-            $table->timestamp('created_at');
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
         });
     }
 
