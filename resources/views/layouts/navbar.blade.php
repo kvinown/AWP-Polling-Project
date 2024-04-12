@@ -47,6 +47,11 @@
                 >
                 <a
                     class="nav-link active mx-1"
+                    href="{{route('matakuliah-index')}}"
+                >Mata Kuliah</a
+                >
+                <a
+                    class="nav-link active mx-1"
                     href="{{route('user-index')}}"
                 >User</a
                 >

@@ -70,7 +70,7 @@ class KurikulumController extends Controller
      */
     public function update(Request $request, Kurikulum $kurikulum)
     {
-        $validedData = validator($request->all(), [
+        $validatedData = validator($request->all(), [
             'tahun' => 'required|integer',
             'semester' => 'required|integer',
         ], [
@@ -78,7 +78,7 @@ class KurikulumController extends Controller
             'semester.required' => 'Semester Kurikulum harus diisi',
         ])->validate();
 
-        $kurikulum->update($validedData);
+        $kurikulum->update($validatedData);
         return redirect(route('kurikulum-index'));
     }
 

@@ -8,7 +8,7 @@
             <div class="container">
                 <div class="card">
                     <div class="row d-flex">
-                        <h5 class="card-title col-md">Data MataKuliah</h5>
+                        <h5 class="card-title col-md">Data Mata Kuliah</h5>
                         <a
                             href="{{route('matakuliah-create')}}"
                             class="col-md-1 btn btn-primary ms-auto">
@@ -23,8 +23,8 @@
                             <th scope="col">ID Mata Kuliah</th>
                             <th scope="col">Nama Mata Kuliah</th>
                             <th scope="col">SKS Mata Kuliah</th>
-                            <th scope="col">ID Kurikulum</th>
-                            <th scope="col">ID Program Studi</th>
+                            <th scope="col">Kurikulum</th>
+                            <th scope="col">Program Studi</th>
                             @if(auth()->user()->id_role == '1')
                             <th scope="col">Delete</th>
                             <th scope="col">Edit</th>
@@ -37,11 +37,15 @@
                                 <td>{{$mk->id}}</td>
                                 <td>{{$mk->nama}}</td>
                                 <td>{{$mk->sks}}</td>
-                                <td>{{$mk->id_kurikulum}}</td>
-                                <td>{{$mk->id_kurikulum}}</td>
+                                @php
+                                    $kurikulum = $kurs->firstWhere('id', $mk->id_kurikulum);
+                                    $programStudi = $progs->firstWhere('id', $mk->id_program_studi);
+                                @endphp
+                                <td>{{$kurikulum->tahun ?? ''}}</td>
+                                <td>{{$programStudi->nama ?? ''}}</td>
                                 @if(auth()->user()->id_role == '1')
                                 <td>
-                                    <a href="{{ route('matakuliah-delete', ['matakuliah' => $mk->id]) }}" role="button" class="btn btn-danger" onclick="return confirmDelete()">
+                                    <a href="{{ route('matakuliah-delete', ['mataKuliah' => $mk->id]) }}" role="button" class="btn btn-danger" onclick="return confirmDelete()">
                                         <i class="fas fa-trash"></i>
                                     </a>
                                     <script>
@@ -51,7 +55,7 @@
                                     </script>
                                 </td>
                                 <td>
-                                    <a href="{{ route('matakuliah-edit', ['matakuliah' => $mk->id]) }}" role="button" class="btn btn-warning">
+                                    <a href="{{ route('matakuliah-edit', ['mataKuliah' => $mk->id]) }}" role="button" class="btn btn-warning">
                                         <i class="fas fa-edit"></i>
                                     </a>
                                 </td>

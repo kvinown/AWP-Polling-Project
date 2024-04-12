@@ -29,11 +29,19 @@
                         </div>
                         <div class="form-group">
                             <label for="id_kurikulum">ID Kurikulum</label>
-                            <input class="my-2 form-control" type="text" name="id_kurikulum" id="id_kurikulum" placeholder="ID Kurikulum" autofocus maxlength="10">
+                            <select name="id_kurikulum" id="id_kurikulum">
+                                @foreach($kurs as $kur)
+                                    <option value="{{$kur->id}}">{{$kur->id}} - {{$kur->tahun}} - {{$kur->semester}}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="id_program_studi">ID Program Studi</label>
-                            <input class="my-2 form-control" type="text" name="id_program_studi" id="id_program_studi" placeholder="ID Program Studi" autofocus maxlength="10">
+                            <select name="id_program_studi" id="id_program_studi">
+                                @foreach($progs as $prog)
+                                    <option value="{{$prog->id}}">{{$prog->id}} - {{$prog->nama}}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                     <div class="card-footer">

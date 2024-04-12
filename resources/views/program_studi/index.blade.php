@@ -37,7 +37,7 @@
                             @php
                                 $fakultas = $faks->firstWhere('id', $prog->id_fakultas);
                             @endphp
-                            <td>{{ $fakultas->nama_fakultas ?? '' }}</td>
+                            <td>{{ $fakultas->nama ?? '' }}</td>
                             <td>
                                 <a href="{{ route('programstudi-delete', ['programStudi' => $prog->id]) }}" role="button" class="btn btn-danger" onclick="return confirmDelete()">
                                     <i class="fas fa-trash"></i>

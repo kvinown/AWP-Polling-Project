@@ -72,7 +72,10 @@ Route::middleware('auth')->group(function () {
     // Mata Kuliah
     Route::get('matakuliah-index', [MataKuliahController::class, 'index'])->name('matakuliah-index');
     Route::get('matakuliah-create', [MataKuliahController::class, 'create'])->name('matakuliah-create');
+    Route::post('matakuliah-store', [MataKuliahController::class, 'store'])->name('matakuliah-store');
     Route::get('matakuliah-delete/{mataKuliah}', [MataKuliahController::class, 'destroy'])->name('matakuliah-delete');
+    Route::get('matakuliah-edit/{mataKuliah}', [MataKuliahController::class, 'edit'])->name('matakuliah-edit');
+    Route::post('matakuliah-update/{mataKuliah}', [MataKuliahController::class, 'update'])->name('matakuliah-update');
 
     // Polling
     Route::get('polling-index', [PollingController::class, 'index'])->name('polling-index');
