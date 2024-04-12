@@ -10,7 +10,7 @@
                     <div class="row d-flex">
                         <h5 class="card-title col-md">Data Polling Detail</h5>
                         <a
-                            href="{{route('polling_detail-create')}}"
+                            href="{{route('pollingdetail-create')}}"
                             class="col-md-1 btn btn-primary ms-auto">
                             Tambah
                         </a>
@@ -39,7 +39,7 @@
                                 <td>{{$pd->id_polling}}</td>
                                 @if(auth()->user()->id_role == '1')
                                 <td>
-                                    <a href="{{ route('polling_detail-delete', ['pollingDetail' => $pd->id]) }}" role="button" class="btn btn-danger" onclick="return confirmDelete()">
+                                    <a href="{{ route('pollingdetail-delete', ['pollingDetail' => $pd->id]) }}" role="button" class="btn btn-danger" onclick="return confirmDelete()">
                                         <i class="fas fa-trash"></i>
                                     </a>
                                     <script>
@@ -49,7 +49,7 @@
                                     </script>
                                 </td>
                                 <td>
-                                    <a href="{{ route('polling_detail-edit', ['pollingDetail' => $pd->id]) }}" role="button" class="btn btn-warning">
+                                    <a href="{{ route('pollingdetail-edit', ['pollingDetail' => $pd->id]) }}" role="button" class="btn btn-warning">
                                         <i class="fas fa-edit"></i>
                                     </a>
                                 </td>
