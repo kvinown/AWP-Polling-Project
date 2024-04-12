@@ -45,6 +45,11 @@
                     href="{{route('user-index')}}"
                 >User</a
                 >
+                <a
+                    class="nav-link active mx-1"
+                    href="{{route('role-index')}}"
+                >Role</a
+                >
                 <form id="logoutForm" method="POST" action="{{ route('logout') }}">
                     @csrf
                     <button type="submit" class="btn btn-danger">
