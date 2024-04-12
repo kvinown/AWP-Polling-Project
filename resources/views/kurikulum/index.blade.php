@@ -2,7 +2,7 @@
 
     @section('web-content')
         <!-- Header -->
-        @include('layouts.header-kurikulum')
+        @include('layouts.header-home')
         <!-- End Header -->
         <section class="content">
             <div class="container">

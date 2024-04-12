@@ -31,7 +31,20 @@ class KurikulumController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validedData = validator($request->all(), [
+            'id' => 'required|string|max:10|unique:kurikulum',
+            'tahun' => 'required|integer',
+            'semester' => 'required|integer',
+        ], [
+            'id.unique' => 'ID Kurikulum sudah terdaftar',
+            'id.required' => 'ID Kurikulum harus diisi',
+            'tahun.required' => 'Tahun Kurikulum harus diisi',
+            'semester.required' => 'Semester Kurikulum harus diisi',
+        ])->validate();
+
+        $kurikulum = new Kurikulum($validedData);
+        $kurikulum->save();
+        return redirect(route('kurikulum-index'));
     }
 
     /**
@@ -47,7 +60,9 @@ class KurikulumController extends Controller
      */
     public function edit(Kurikulum $kurikulum)
     {
-        //
+        return view('kurikulum.edit', [
+            'kur' => $kurikulum
+        ]);
     }
 
     /**
@@ -55,7 +70,16 @@ class KurikulumController extends Controller
      */
     public function update(Request $request, Kurikulum $kurikulum)
     {
-        //
+        $validedData = validator($request->all(), [
+            'tahun' => 'required|integer',
+            'semester' => 'required|integer',
+        ], [
+            'tahun.required' => 'Tahun Kurikulum harus diisi',
+            'semester.required' => 'Semester Kurikulum harus diisi',
+        ])->validate();
+
+        $kurikulum->update($validedData);
+        return redirect(route('kurikulum-index'));
     }
 
     /**

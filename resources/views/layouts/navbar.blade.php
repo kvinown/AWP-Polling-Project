@@ -42,6 +42,11 @@
                 >
                 <a
                     class="nav-link active mx-1"
+                    href="{{route('kurikulum-index')}}"
+                >Kurikulum</a
+                >
+                <a
+                    class="nav-link active mx-1"
                     href="{{route('user-index')}}"
                 >User</a
                 >

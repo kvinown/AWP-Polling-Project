@@ -64,7 +64,10 @@ Route::middleware('auth')->group(function () {
     // Kurikulum
     Route::get('kurikulum-index', [KurikulumController::class, 'index'])->name('kurikulum-index');
     Route::get('kurikulum-create', [KurikulumController::class, 'create'])->name('kurikulum-create');
+    Route::post('kurikulum-store', [KurikulumController::class, 'store'])->name('kurikulum-store');
     Route::get('kurikulum-delete/{kurikulum}', [KurikulumController::class, 'destroy'])->name('kurikulum-delete');
+    Route::get('kurikulum-edit/{kurikulum}', [KurikulumController::class, 'edit'])->name('kurikulum-edit');
+    Route::post('kurikulum-update/{kurikulum}', [KurikulumController::class, 'update'])->name('kurikulum-update');
 
     // Mata Kuliah
     Route::get('matakuliah-index', [MataKuliahController::class, 'index'])->name('matakuliah-index');

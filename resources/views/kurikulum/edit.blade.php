@@ -2,7 +2,7 @@
 
 @section('web-content')
     <!-- Header -->
-    @include('layouts.header-kurikulum')
+    @include('layouts.header-home')
     <!-- End Header -->
     <section class="content">
         <div class="container">
@@ -21,11 +21,11 @@
                         </div>
                         <div class="form-group">
                             <label for="nama">Tahun Kurikulum</label>
-                            <input class="my-2 form-control" type="number" name="tahun" id="tahun" placeholder="Tahun Kurikulum" required autofocus maxlength="100" value="{{$kur->tahun}}">
+                            <input class="my-2 form-control" type="number" name="tahun" id="tahun" placeholder="Tahun Kurikulum" required autofocus value="{{$kur->tahun}}">
                         </div>
                         <div class="form-group">
                             <label for="nama">Semester Kurikulum</label>
-                            <input class="my-2 form-control" type="number" name="semester" id="semester" placeholder="Semester Kurikulum" required autofocus maxlength="100" value="{{$kur->semester}}">
+                            <input class="my-2 form-control" type="number" name="semester" id="semester" placeholder="Semester Kurikulum" required autofocus value="{{$kur->semester}}">
                         </div>
                     </div>
                     <div class="card-footer">
