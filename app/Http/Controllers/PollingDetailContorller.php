@@ -23,7 +23,7 @@ class PollingDetailContorller extends Controller
      */
     public function create()
     {
-        return view('polling_detaili.create');
+        return view('polling_detail.create');
     }
 
     /**
