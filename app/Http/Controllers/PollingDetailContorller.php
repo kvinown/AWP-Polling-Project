@@ -31,7 +31,22 @@ class PollingDetailContorller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = validator($request->all(), [
+            'id' => 'required|string|max:10|unique:polling_detail',
+            'id_user' => 'required|string|max:10',
+            'id_mata_kuliah' => 'required|string|max:10',
+            'id_polling' => 'required|string|max:10',
+        ], [
+            'id.unique' => 'ID Polling Detail sudah ada',
+            'id.required' => 'ID Polling Detail harus diisi',
+            'id_user.required' => 'ID User harus diisi',
+            'id_mata_kuliah.required' => 'ID Mata Kuliah harus diisi',
+            'id_polling.required' => 'ID Polling harus diisi',
+        ])->validate();
+
+        $polling_detail = new PollingDetail($validatedData);
+        $polling_detail->save();
+        return redirect(route('pollingdetail'));
     }
 
     /**
@@ -47,7 +62,9 @@ class PollingDetailContorller extends Controller
      */
     public function edit(PollingDetail $pollingDetail)
     {
-        //
+        return view('polling_detail.edit', [
+            'pd' => $pollingDetail
+        ]);
     }
 
     /**
@@ -55,7 +72,18 @@ class PollingDetailContorller extends Controller
      */
     public function update(Request $request, PollingDetail $pollingDetail)
     {
-        //
+        $validatedData = validator($request->all(), [
+            'id_user' => 'required|string|max:10',
+            'id_mata_kuliah' => 'required|string|max:10',
+            'id_polling' => 'required|string|max:10',
+        ], [
+            'id_user.required' => 'ID User harus diisi',
+            'id_mata_kuliah.required' => 'ID Mata Kuliah harus diisi',
+            'id_polling.required' => 'ID Polling harus diisi',
+        ])->validate();
+
+        $pollingDetail->update($validatedData);
+        return redirect(route('pollingdetail-index'));
     }
 
     /**

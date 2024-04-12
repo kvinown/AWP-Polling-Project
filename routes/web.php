@@ -88,7 +88,10 @@ Route::middleware('auth')->group(function () {
     // Polling Detail
     Route::get('pollingdetail-index', [PollingDetailContorller::class, 'index'])->name('pollingdetail-index');
     Route::get('pollingdetail-create', [PollingDetailContorller::class, 'create'])->name('pollingdetail-create');
+    Route::post('pollingdetail-store', [PollingDetailContorller::class, 'store'])->name('pollingdetail-store');
     Route::get('pollingdetail-delete/{pollingDetail}', [PollingDetailContorller::class, 'destroy'])->name('pollingdetail-delete');
+    Route::get('pollingdetail-edit/{pollingDetail}', [PollingDetailContorller::class, 'edit'])->name('pollingdetail-edit');
+    Route::post('pollingdetail-update/{pollingDetail}', [PollingDetailContorller::class, 'update'])->name('pollingdetail-update');
 
     // Program Studi
     Route::get('programstudi-index', [ProgramStudiController::class, 'index'])->name('programstudi-index');
