@@ -30,11 +30,11 @@
                     href="{{route('polling-index')}}"
                 >Polling Mata Kuliah</a
                 >
+                @if(auth()->user()->id_role == '1')
                 <div class="dropdown">
                     <a class="nav-link active mx-1 dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                         Menu
                     </a>
-
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <li><a class="dropdown-item" href="{{ route('pollingdetail-index') }}">Hasil</a></li>
                         <li><a class="dropdown-item" href="{{ route('fakultas-index') }}">Fakultas</a></li>
@@ -45,6 +45,7 @@
                         <li><a class="dropdown-item" href="{{ route('role-index') }}">Role</a></li>
                     </ul>
                 </div>
+                @endif
                 <form id="logoutForm" method="POST" action="{{ route('logout') }}">
                     @csrf
                     <button type="submit" class="btn btn-danger">
