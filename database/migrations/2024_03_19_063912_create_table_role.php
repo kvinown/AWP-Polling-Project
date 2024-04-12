@@ -19,11 +19,20 @@ return new class extends Migration
         });
 
         \Illuminate\Support\Facades\DB::table('role')->insert([
-            'id' => '1',
-            'nama' => 'Admin',
-            'updated_at'=> now(),
-            'created_at'=> now()
+            [
+                'id' => 1,
+                'nama' => 'Admin',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'id' => 2,
+                'nama' => 'User',
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
         ]);
+
     }
 
 

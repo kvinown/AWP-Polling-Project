@@ -44,6 +44,7 @@ Route::middleware('auth')->group(function () {
         return view('home');
     })->name('home');
     Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
+
     // User
     Route::get('user-index', [UserController::class, 'index'])->name('user-index');
     Route::get('user-create', [UserController::class, 'create'])->name('user-create');
@@ -91,7 +92,10 @@ Route::middleware('auth')->group(function () {
     // Role
     Route::get('role-index', [RoleController::class, 'index'])->name('role-index');
     Route::get('role-create', [RoleController::class, 'create'])->name('role-create');
+    Route::post('role-store', [RoleController::class, 'store'])->name('role-store');
     Route::get('role-delete/{role}', [RoleController::class, 'destroy'])->name('role-delete');
+    Route::get('role-edit/{role}', [RoleController::class, 'edit'])->name('role-edit');
+    Route::post('role-update/{role}', [RoleController::class, 'update'])->name('role-update');
 
     // User
     Route::get('akun-index', [UserController::class, 'index'])->name('akun-index');

@@ -23,7 +23,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view('user.create');
+        return view('role.create');
     }
 
     /**
@@ -31,7 +31,18 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validedData = validator($request->all(), [
+            'id' => 'required|string|max:10|unique:role',
+            'nama' => 'required|string|max:100',
+        ], [
+            'id.unique' => 'ID Role sudah terdaftar',
+            'id.required' => 'ID Role harus diisi',
+            'nama.required' => 'Nama Role harus diisi',
+        ])->validate();
+
+        $role = new Role($validedData);
+        $role->save();
+        return redirect(route('role-index'));
     }
 
     /**
