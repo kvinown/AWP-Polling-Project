@@ -2,15 +2,15 @@
 
     @section('web-content')
         <!-- Header -->
-        @include('layouts.header-fakultas')
+        @include('layouts.header-polling_detail')
         <!-- End Header -->
         <section class="content">
             <div class="container">
                 <div class="card">
                     <div class="row d-flex">
-                        <h5 class="card-title col-md">Data Fakultas</h5>
+                        <h5 class="card-title col-md">Data Polling Detail</h5>
                         <a
-                            href="{{route('fakultas-create')}}"
+                            href="{{route('polling_detail-create')}}"
                             class="col-md-1 btn btn-primary ms-auto">
                             Tambah
                         </a>
@@ -20,8 +20,10 @@
                         width="100%">
                         <thead class="border border-dark">
                         <tr>
-                            <th scope="col">ID Fakultas</th>
-                            <th scope="col">Nama Fakultas</th>
+                            <th scope="col">ID Polling Detail</th>
+                            <th scope="col">ID User</th>
+                            <th scope="col">ID Mata Kuliah</th>
+                            <th scope="col">ID Polling</th>
                             @if(auth()->user()->id_role == '1')
                             <th scope="col">Delete</th>
                             <th scope="col">Edit</th>
@@ -29,13 +31,15 @@
                         </tr>
                         </thead>
                         <tbody class="border border-dark">
-                        @foreach($faks as $fak)
+                        @foreach($pds as $pd)
                             <tr>
-                                <td>{{$fak->id}}</td>
-                                <td>{{$fak->nama}}</td>
+                                <td>{{$pd->id}}</td>
+                                <td>{{$pd->id_user}}</td>
+                                <td>{{$pd->id_mata_kuliah}}</td>
+                                <td>{{$pd->id_polling}}</td>
                                 @if(auth()->user()->id_role == '1')
                                 <td>
-                                    <a href="{{ route('fakultas-delete', ['fakultas' => $fak->id]) }}" role="button" class="btn btn-danger" onclick="return confirmDelete()">
+                                    <a href="{{ route('polling_detail-delete', ['polling_detail' => $pd->id]) }}" role="button" class="btn btn-danger" onclick="return confirmDelete()">
                                         <i class="fas fa-trash"></i>
                                     </a>
                                     <script>
@@ -45,7 +49,7 @@
                                     </script>
                                 </td>
                                 <td>
-                                    <a href="{{ route('fakultas-edit', ['fakultas' => $fak->id]) }}" role="button" class="btn btn-warning">
+                                    <a href="{{ route('polling_detail-edit', ['polling_detail' => $pd->id]) }}" role="button" class="btn btn-warning">
                                         <i class="fas fa-edit"></i>
                                     </a>
                                 </td>
