@@ -27,39 +27,24 @@
                 >
                 <a
                     class="nav-link active mx-1"
-                    href="{{route('matakuliah-index')}}"
+                    href="{{route('polling-index')}}"
                 >Polling Mata Kuliah</a
                 >
-                <a
-                    class="nav-link active mx-1"
-                    href="{{route('fakultas-index')}}"
-                >Fakultas</a
-                >
-                <a
-                    class="nav-link active mx-1"
-                    href="{{route('programstudi-index')}}"
-                >Program Studi</a
-                >
-                <a
-                    class="nav-link active mx-1"
-                    href="{{route('kurikulum-index')}}"
-                >Kurikulum</a
-                >
-                <a
-                    class="nav-link active mx-1"
-                    href="{{route('matakuliah-index')}}"
-                >Mata Kuliah</a
-                >
-                <a
-                    class="nav-link active mx-1"
-                    href="{{route('user-index')}}"
-                >User</a
-                >
-                <a
-                    class="nav-link active mx-1"
-                    href="{{route('role-index')}}"
-                >Role</a
-                >
+                <div class="dropdown">
+                    <a class="nav-link active mx-1 dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                        Menu
+                    </a>
+
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <li><a class="dropdown-item" href="{{ route('pollingdetail-index') }}">Hasil</a></li>
+                        <li><a class="dropdown-item" href="{{ route('fakultas-index') }}">Fakultas</a></li>
+                        <li><a class="dropdown-item" href="{{ route('programstudi-index') }}">Program Studi</a></li>
+                        <li><a class="dropdown-item" href="{{ route('kurikulum-index') }}">Kurikulum</a></li>
+                        <li><a class="dropdown-item" href="{{ route('matakuliah-index') }}">Mata Kuliah</a></li>
+                        <li><a class="dropdown-item" href="{{ route('user-index') }}">User</a></li>
+                        <li><a class="dropdown-item" href="{{ route('role-index') }}">Role</a></li>
+                    </ul>
+                </div>
                 <form id="logoutForm" method="POST" action="{{ route('logout') }}">
                     @csrf
                     <button type="submit" class="btn btn-danger">

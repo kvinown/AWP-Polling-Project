@@ -80,7 +80,10 @@ Route::middleware('auth')->group(function () {
     // Polling
     Route::get('polling-index', [PollingController::class, 'index'])->name('polling-index');
     Route::get('polling-create', [PollingController::class, 'create'])->name('polling-create');
+    Route::post('polling-store', [PollingController::class, 'store'])->name('polling-store');
     Route::get('polling-delete/{polling}', [PollingController::class, 'destroy'])->name('polling-delete');
+    Route::get('polling-edit/{polling}', [PollingController::class, 'edit'])->name('polling-edit');
+    Route::post('polling-update/{polling}', [PollingController::class, 'update'])->name('polling-update');
 
     // Polling Detail
     Route::get('pollingdetail-index', [PollingDetailContorller::class, 'index'])->name('pollingdetail-index');
