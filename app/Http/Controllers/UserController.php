@@ -70,7 +70,10 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('user.edit', [
+            'user' => $user,
+            'roles' => \App\Models\Role::all()
+        ]);
     }
 
     /**
@@ -78,7 +81,26 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'old_password' => ['required', 'string'],
+            'password' => ['required', 'confirmed'],
+            'id_role' => ['required', 'string']
+        ]);
+
+        if (!Hash::check($request->old_password, $user->password)) {
+            return back()->withErrors(['old_password' => 'The old password is incorrect.']);
+        }
+
+        $user->update([
+            'name' => $request->name,
+            'password' => Hash::make($request->password),
+            'id_role' => $request->id_role
+        ]);
+
+
+
+        return redirect(route('user-index'));
     }
 
     /**

@@ -50,6 +50,7 @@ Route::middleware('auth')->group(function () {
     Route::post('user-store', [UserController::class, 'store'])->name('user-store');
     Route::get('user-delete{user}', [UserController::class, 'destroy'])->name('user-delete');
     Route::get('user-edit{user}', [UserController::class, 'edit'])->name('user-edit');
+    Route::post('user-update{user}', [UserController::class, 'update'])->name('user-update');
 
     // Fakultas
     Route::get('fakultas-index', [FakultasController::class, 'index'])->name('fakultas-index');
