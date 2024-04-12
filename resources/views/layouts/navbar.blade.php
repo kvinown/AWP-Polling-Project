@@ -42,8 +42,8 @@
                 >
                 <a
                     class="nav-link active mx-1"
-                    href="#"
-                >Hasil</a
+                    href="{{route('user-index')}}"
+                >User</a
                 >
                 <form id="logoutForm" method="POST" action="{{ route('logout') }}">
                     @csrf

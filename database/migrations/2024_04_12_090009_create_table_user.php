@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('id_role', 10);
+            $table->foreign('id_role')->references('id')->on('role')->onUpdate('cascade')->onDelete('restrict');
             $table->rememberToken();
             $table->timestamps();
         });
@@ -25,6 +27,7 @@ return new class extends Migration
             'name' => 'John Doe',
             'email' => 'john@gmail.com',
             'password' => bcrypt('12345678'),
+            'id_role' => '1'
         ]);
 
 

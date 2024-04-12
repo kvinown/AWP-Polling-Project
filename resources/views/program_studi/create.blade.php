@@ -21,7 +21,7 @@
                         </div>
                         <div class="form-group">
                             <label for="nama">Nama Program Studi</label>
-                            <input class="my-2 form-control" type="text" name="nama" id="nama" placeholder="Nama Program Studi" required autofocus maxlength="100">
+                            <input class="my-2 form-control" type="text" name="nama" id="nama" placeholder="Nama Program Studi" autofocus maxlength="100">
                         </div>
                         <div class="form-group">
                             <label for="id_fakultas">ID Fakultas</label><br>

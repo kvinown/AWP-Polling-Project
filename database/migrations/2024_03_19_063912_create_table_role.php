@@ -17,7 +17,15 @@ return new class extends Migration
             $table->timestamp('updated_at');
             $table->timestamp('created_at');
         });
+
+        \Illuminate\Support\Facades\DB::table('role')->insert([
+            'id' => '1',
+            'nama' => 'Admin',
+            'updated_at'=> now(),
+            'created_at'=> now()
+        ]);
     }
+
 
     /**
      * Reverse the migrations.

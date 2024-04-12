@@ -35,7 +35,7 @@
                             <td>{{$prog->nama}}</td>
                             <td>{{$prog->id_fakultas}}</td>
                             @php
-                                $fakultas = $faks->firstWhere('id_fakultas', $prog->id_fakultas);
+                                $fakultas = $faks->firstWhere('id', $prog->id_fakultas);
                             @endphp
                             <td>{{ $fakultas->nama_fakultas ?? '' }}</td>
                             <td>

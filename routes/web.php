@@ -44,6 +44,12 @@ Route::middleware('auth')->group(function () {
         return view('home');
     })->name('home');
     Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
+    // User
+    Route::get('user-index', [UserController::class, 'index'])->name('user-index');
+    Route::get('user-create', [UserController::class, 'create'])->name('user-create');
+    Route::post('user-store', [UserController::class, 'store'])->name('user-store');
+    Route::get('user-delete{user}', [UserController::class, 'destroy'])->name('user-delete');
+    Route::get('user-edit{user}', [UserController::class, 'edit'])->name('user-edit');
 
     // Fakultas
     Route::get('fakultas-index', [FakultasController::class, 'index'])->name('fakultas-index');

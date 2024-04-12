@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\Role;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -15,8 +16,10 @@ class UserController extends Controller
      */
     public function index()
     {
+        $data = User::all();
         return view('user.index', [
-            'users' => User::all()
+            'users' => $data,
+            'roles' => \App\Models\Role::all()
         ]);
     }
 
@@ -25,7 +28,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('user.create');
+        return view('user.create', [
+            'roles' => \App\Models\Role::all()
+        ]);
     }
 
     /**
@@ -37,19 +42,19 @@ class UserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed'],
-            'role' => ['required', 'string']
+            'id_role' => ['required', 'string']
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' => $request->role
+            'id_role' => $request->id_role
         ]);
 
 
 
-        return redirect(route('user.index'));
+        return redirect(route('user-index'));
     }
 
     /**
@@ -81,6 +86,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user -> delete();
+        return redirect(route('user-index'));
     }
 }
