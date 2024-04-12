@@ -39,7 +39,7 @@
                                 <td>{{$pd->id_polling}}</td>
                                 @if(auth()->user()->id_role == '1')
                                 <td>
-                                    <a href="{{ route('polling_detail-delete', ['polling_detail' => $pd->id]) }}" role="button" class="btn btn-danger" onclick="return confirmDelete()">
+                                    <a href="{{ route('polling_detail-delete', ['pollingDetail' => $pd->id]) }}" role="button" class="btn btn-danger" onclick="return confirmDelete()">
                                         <i class="fas fa-trash"></i>
                                     </a>
                                     <script>
@@ -49,7 +49,7 @@
                                     </script>
                                 </td>
                                 <td>
-                                    <a href="{{ route('polling_detail-edit', ['polling_detail' => $pd->id]) }}" role="button" class="btn btn-warning">
+                                    <a href="{{ route('polling_detail-edit', ['pollingDetail' => $pd->id]) }}" role="button" class="btn btn-warning">
                                         <i class="fas fa-edit"></i>
                                     </a>
                                 </td>

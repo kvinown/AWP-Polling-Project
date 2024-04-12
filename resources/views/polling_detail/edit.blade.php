@@ -12,7 +12,7 @@
                 </div>
             @endif
             <div class="card p-4">
-                <form action="{{route('polling_detail-update', ['polling_detail' => $pd->id])}}" method="post">
+                <form action="{{route('polling_detail-update', ['pollingDetail' => $pd->id])}}" method="post">
                     @csrf
                     <div class="card-body">
                         <div class="form-group">
