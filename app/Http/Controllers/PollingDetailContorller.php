@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MataKuliah;
+use App\Models\Polling;
 use App\Models\PollingDetail;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PollingDetailContorller extends Controller
@@ -14,7 +17,10 @@ class PollingDetailContorller extends Controller
     {
         $data = PollingDetail::all();
         return view('polling_detail.index', [
-            'pds' => $data
+            'pds' => $data,
+            'pol' => Polling::all(),
+            'users' => User::all(),
+            'mks' => MataKuliah::all(),
         ]);
     }
 
@@ -23,7 +29,11 @@ class PollingDetailContorller extends Controller
      */
     public function create()
     {
-        return view('polling_detail.create');
+        return view('polling_detail.create', [
+            'pol' => Polling::all(),
+            'users' => User::all(),
+            'mks' => MataKuliah::all(),
+        ]);
     }
 
     /**
@@ -63,7 +73,10 @@ class PollingDetailContorller extends Controller
     public function edit(PollingDetail $pollingDetail)
     {
         return view('polling_detail.edit', [
-            'pd' => $pollingDetail
+            'pd' => $pollingDetail,
+            'pol' => Polling::all(),
+            'users' => User::all(),
+            'mks' => MataKuliah::all(),
         ]);
     }
 
