@@ -2,7 +2,7 @@
 
 @section('web-content')
     <!-- Header -->
-    @include('layouts.header-home')
+    @include('layouts.header-user')
     <!-- End Header -->
     <section class="content">
         <div class="container">
