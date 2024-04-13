@@ -15,16 +15,19 @@
                 <form action="{{route('fakultas-store')}}" method="post">
                     @csrf
                     <div class="card-body">
+                        {{-- ID Fakultas --}}
                         <div class="form-group">
                             <label for="id">ID Fakultas</label>
                             <input class="my-2 form-control" type="text" name="id" id="id" placeholder="ID Fakultas" required autofocus maxlength="10">
                         </div>
+                        {{-- Nama Fakultas --}}
                         <div class="form-group">
                             <label for="nama">Nama Fakultas</label>
                             <input class="my-2 form-control" type="text" name="nama" id="nama" placeholder="Nama Fakultas" autofocus maxlength="100">
                         </div>
                     </div>
                     <div class="card-footer">
+                        {{-- Submit --}}
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </form>

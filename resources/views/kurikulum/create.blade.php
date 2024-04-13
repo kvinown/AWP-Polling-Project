@@ -15,20 +15,24 @@
                 <form action="{{route('kurikulum-store')}}" method="post">
                     @csrf
                     <div class="card-body">
+                        {{-- ID Kurikulum --}}
                         <div class="form-group">
                             <label for="id">ID Kurikulum</label>
                             <input class="my-2 form-control" type="text" name="id" id="id" placeholder="ID Kurikulum" required autofocus maxlength="10">
                         </div>
+                        {{-- Tahun Kurikulum --}}
                         <div class="form-group">
                             <label for="tahun">Tahun Kurikulum</label>
                             <input class="my-2 form-control" type="number" name="tahun" id="tahun" placeholder="Tahun Kurikulum" autofocus>
                         </div>
+                        {{-- Semester Kurikulum --}}
                         <div class="form-group">
                             <label for="semester">Semester Kurikulum</label>
                             <input class="my-2 form-control" type="number" name="semester" id="semester" placeholder="Semester Kurikulum" autofocus>
                         </div>
                     </div>
                     <div class="card-footer">
+                        {{-- Submit --}}
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </form>

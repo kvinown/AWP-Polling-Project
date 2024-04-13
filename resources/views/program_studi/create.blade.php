@@ -15,14 +15,17 @@
                 <form action="{{route('programstudi-store')}}" method="post">
                     @csrf
                     <div class="card-body">
+                        {{-- ID Program Studi --}}
                         <div class="form-group">
                             <label for="id">ID Program Studi</label>
                             <input class="my-2 form-control" type="text" name="id" id="id" placeholder="ID Program Studi" required autofocus maxlength="10">
                         </div>
+                        {{-- Nama Program Studi --}}
                         <div class="form-group">
                             <label for="nama">Nama Program Studi</label>
                             <input class="my-2 form-control" type="text" name="nama" id="nama" placeholder="Nama Program Studi" autofocus maxlength="100">
                         </div>
+                        {{-- ID Fakultas --}}
                         <div class="form-group">
                             <label for="id_fakultas">ID Fakultas</label><br>
                             <select name="id_fakultas" id="id_fakultas">
@@ -33,6 +36,7 @@
                         </div>
                     </div>
                     <div class="card-footer">
+                        {{-- Submit --}}
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </form>

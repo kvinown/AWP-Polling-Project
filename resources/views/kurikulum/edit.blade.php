@@ -15,20 +15,24 @@
                 <form action="{{route('kurikulum-update', ['kurikulum' => $kur->id])}}" method="post">
                     @csrf
                     <div class="card-body">
+                        {{-- ID Kurikulum --}}
                         <div class="form-group">
                             <label for="id">ID Kurikulum</label>
                             <input class="my-2 form-control" type="text" name="id" id="id" placeholder="ID Kurikulum" required autofocus maxlength="10" readonly value="{{$kur->id}}">
                         </div>
+                        {{-- Tahun Kurikulum --}}
                         <div class="form-group">
                             <label for="tahun">Tahun Kurikulum</label>
                             <input class="my-2 form-control" type="number" name="tahun" id="tahun" placeholder="Tahun Kurikulum" required autofocus value="{{$kur->tahun}}">
                         </div>
+                        {{-- Semester Kurikulum --}}
                         <div class="form-group">
                             <label for="semester">Semester Kurikulum</label>
                             <input class="my-2 form-control" type="number" name="semester" id="semester" placeholder="Semester Kurikulum" required autofocus value="{{$kur->semester}}">
                         </div>
                     </div>
                     <div class="card-footer">
+                        {{-- Submit --}}
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </form>

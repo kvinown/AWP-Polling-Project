@@ -24,10 +24,18 @@ return new class extends Migration
         });
 
         \Illuminate\Support\Facades\DB::table('users')->insert([
-            'name' => 'John Doe',
-            'email' => 'john@gmail.com',
-            'password' => bcrypt('12345678'),
-            'id_role' => '1'
+            [
+                'name' => 'John Doe',
+                'email' => 'john@gmail.com',
+                'password' => bcrypt('12345678'),
+                'id_role' => '1'
+            ],
+            [
+                'name' => 'Doe John',
+                'email' => 'Doe@gmail.com',
+                'password' => bcrypt('12345678'),
+                'id_role' => '2'
+            ],
         ]);
 
 

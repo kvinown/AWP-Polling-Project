@@ -15,18 +15,22 @@
                 <form action="{{route('matakuliah-store')}}" method="post">
                     @csrf
                     <div class="card-body">
+                        {{-- ID Mata Kuliah --}}
                         <div class="form-group">
                             <label for="id">ID Mata Kuliah</label>
                             <input class="my-2 form-control" type="text" name="id" id="id" placeholder="ID Matakuliah" required autofocus maxlength="10">
                         </div>
+                        {{-- Nama Mata Kuliah --}}
                         <div class="form-group">
                             <label for="nama">Nama Mata Kuliah</label>
                             <input class="my-2 form-control" type="text" name="nama" id="nama" placeholder="Nama Matakuliah" autofocus maxlength="100">
                         </div>
+                        {{-- SKS --}}
                         <div class="form-group">
                             <label for="sks">SKS Mata Kuliah</label>
                             <input class="my-2 form-control" type="number" name="sks" id="sks" placeholder="SKS Matakuliah" autofocus maxlength="10">
                         </div>
+                        {{-- ID Kurikulum --}}
                         <div class="form-group">
                             <label for="id_kurikulum">ID Kurikulum</label>
                             <select name="id_kurikulum" id="id_kurikulum">
@@ -35,6 +39,7 @@
                                 @endforeach
                             </select>
                         </div>
+                        {{-- ID Program Studi --}}
                         <div class="form-group">
                             <label for="id_program_studi">ID Program Studi</label>
                             <select name="id_program_studi" id="id_program_studi">
@@ -45,6 +50,7 @@
                         </div>
                     </div>
                     <div class="card-footer">
+                        {{-- Submit --}}
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </form>

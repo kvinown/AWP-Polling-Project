@@ -15,26 +15,32 @@
                 <form action="{{route('user-update', ['user' => $user -> id])}}" method="post">
                     @csrf
                     <div class="card-body">
+                        {{-- Nama --}}
                         <div class="form-group">
                             <label for="name">Nama</label>
                             <input class="my-2 form-control" type="text" name="name" id="name" placeholder="Nama Fakultas" autofocus maxlength="255" value="{{$user->name}}">
                         </div>
+                        {{-- Email Address --}}
                         <div class="form-group">
                             <label for="email">Email</label>
                             <input class="my-2 form-control" type="email" name="email" id="email" placeholder="Email" required autofocus maxlength="255" readonly value="{{$user->email}}">
                         </div>
+                        {{-- Old Password --}}
                         <div class="form-group">
                             <label for="old_password">Password Sebelumnya</label>
                             <input class="my-2 form-control" type="password" name="old_password" id="old_password" placeholder="Password Sebelumnya" required autofocus maxlength="255">
                         </div>
+                        {{-- New Password --}}
                         <div class="form-group">
                             <label for="password">New Password</label>
                             <input class="my-2 form-control" type="password" name="password" id="password" placeholder="Password" required autofocus maxlength="255">
                         </div>
+                        {{-- Confirm Password --}}
                         <div class="form-group">
                             <label for="password_confirmation">Confirm Password</label>
                             <input class="my-2 form-control" type="password" name="password_confirmation" id="password_confirmation" placeholder="Password" required autofocus maxlength="255">
                         </div>
+                        {{-- ID Role --}}
                         <div class="form-group">
                             <label for="id_role">Role</label>
                             <select name="id_role" id="id_role">
@@ -46,6 +52,7 @@
                         </div>
                     </div>
                     <div class="card-footer">
+                        {{-- Submit --}}
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </form>

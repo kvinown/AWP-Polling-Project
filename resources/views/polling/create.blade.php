@@ -15,16 +15,19 @@
                 <form action="{{route('polling-store')}}" method="post">
                     @csrf
                     <div class="card-body">
+                        {{-- ID Polling --}}
                         <div class="form-group">
                             <label for="id">ID Polling</label>
                             <input class="my-2 form-control" type="text" name="id" id="id" placeholder="ID Polling" required autofocus maxlength="10">
                         </div>
+                        {{-- Status --}}
                         <div class="form-group">
                             <label for="status">Status Polling</label>
                             <input class="my-2 form-control" type="text" name="status" id="status" placeholder="Status Polling" autofocus maxlength="100">
                         </div>
                     </div>
                     <div class="card-footer">
+                        {{-- Submit --}}
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </form>
