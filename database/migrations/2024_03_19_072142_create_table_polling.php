@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('polling', function (Blueprint $table) {
             $table->string('id', 10)->primary();
-            $table->string('status', 5);
+            $table->dateTime('started_date');
+            $table->dateTime('ended_date');
+            $table->integer('total_sks');
+            $table->boolean('status');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
 
