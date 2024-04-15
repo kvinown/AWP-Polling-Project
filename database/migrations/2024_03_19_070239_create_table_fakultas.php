@@ -17,6 +17,17 @@ return new class extends Migration
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
         });
+
+        \Illuminate\Support\Facades\DB::table('fakultas')->insert([
+            [
+                'id' => 1,
+                'nama' => 'Teknologi Informasi'
+            ],
+            [
+                'id' => 2,
+                'nama' => 'Teknik',
+            ]
+        ]);
     }
 
     /**

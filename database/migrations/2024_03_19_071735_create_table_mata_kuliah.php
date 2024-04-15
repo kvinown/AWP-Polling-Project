@@ -22,6 +22,37 @@ return new class extends Migration
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
         });
+
+        \Illuminate\Support\Facades\DB::table('mata_kuliah')->insert([
+            [
+                'id' => 1,
+                'nama' => 'Pemrograman Web Lanjut',
+                'sks' => 4,
+                'id_kurikulum' => 1,
+                'id_program_studi' => 1,
+            ],
+            [
+                'id' => 2,
+                'nama' => 'Strategi Algoritmik',
+                'sks' => 3,
+                'id_kurikulum' => 1,
+                'id_program_studi' => 1,
+            ],
+            [
+                'id' => 3,
+                'nama' => 'Basis Data Lanjut',
+                'sks' => 3,
+                'id_kurikulum' => 1,
+                'id_program_studi' => 1,
+            ],
+            [
+                'id' => 4,
+                'nama' => 'Statistika',
+                'sks' => 3,
+                'id_kurikulum' => 1,
+                'id_program_studi' => 1,
+            ]
+        ]);
     }
 
     /**

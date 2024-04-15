@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kurikulum;
 use App\Models\MataKuliah;
 use App\Models\Polling;
 use App\Models\PollingDetail;
+use App\Models\ProgramStudi;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class PollingDetailContorller extends Controller
 {
@@ -15,14 +18,50 @@ class PollingDetailContorller extends Controller
      */
     public function index()
     {
-        $data = PollingDetail::all();
+        $role = auth()->user()->id_role;
+        $status = null;
+        $id_polling = auth()->user()->id;
+        if($role == 2) {
+
+            $pollingDetail = PollingDetail::where('id_polling', $id_polling)->get();
+
+            $polling = Polling::findOrFail($id_polling);
+            $status = $polling->status;
+        } else if ($role == 1) {
+            $polling = Polling::all();
+            $pollingDetail = PollingDetail::all();
+            $pollingStatus = Polling::findOrFail($id_polling);
+            $status = $pollingStatus->status;
+        }
         return view('polling_detail.index', [
-            'pds' => $data,
-            'pol' => Polling::all(),
+            'role' => $role,
+            'status' => $status,
+            'pds' => $pollingDetail,
+            'pol' => $polling,
             'users' => User::all(),
             'mks' => MataKuliah::all(),
+            'kurs' => Kurikulum::all(),
+            'progs' => ProgramStudi::all(),
         ]);
     }
+public function hasil()
+    {
+        $id_polling = auth()->user()->id;
+
+        $pollingDetail = PollingDetail::where('id_polling', $id_polling)->get();
+
+        $polling = Polling::findOrFail($id_polling);
+
+        return view('polling_detail.hasil', [
+            'pds' => $pollingDetail,
+            'pol' => $polling,
+            'users' => User::all(),
+            'mks' => MataKuliah::all(),
+            'kurs' => Kurikulum::all(),
+            'progs' => ProgramStudi::all(),
+        ]);
+
+}
 
     /**
      * Show the form for creating a new resource.
@@ -41,23 +80,38 @@ class PollingDetailContorller extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = validator($request->all(), [
-            'id' => 'required|string|max:10|unique:polling_detail',
-            'id_user' => 'required|string|max:10',
-            'id_mata_kuliah' => 'required|string|max:10',
-            'id_polling' => 'required|string|max:10',
-        ], [
-            'id.unique' => 'ID Polling Detail sudah ada',
-            'id.required' => 'ID Polling Detail harus diisi',
-            'id_user.required' => 'ID User harus diisi',
-            'id_mata_kuliah.required' => 'ID Mata Kuliah harus diisi',
-            'id_polling.required' => 'ID Polling harus diisi',
-        ])->validate();
+        $validatedData = $request->validate([
+            'matakuliah' => 'required|array',
+            'matakuliah.*' => 'exists:mata_kuliah,id',
+        ]);
 
-        $polling_detail = new PollingDetail($validatedData);
-        $polling_detail->save();
-        return redirect(route('pollingdetail'));
+        $id_user = auth()->user()->id; // Assign user ID
+        $id_polling = auth()->user()->id; // Assign polling ID (mungkin sebaiknya gunakan id polling yang sesuai dari input)
+
+        $increment = 0;
+        foreach ($validatedData['matakuliah'] as $matakuliahId) {
+            $pollingDetailId = $id_polling . '_' . $increment;
+            $increment += 1;
+
+            // Create polling detail record
+            $data = [
+                'id'=> $pollingDetailId,
+                'id_user' => $id_user, // Set 'id_users' to current user ID
+                'id_polling' => $id_polling,
+                'id_mata_kuliah' => $matakuliahId,
+            ];
+            $pollingDetail = new PollingDetail($data);
+            $pollingDetail->save();
+
+            $polling = Polling::findOrFail($id_polling);
+            $polling -> status = false;
+            $polling->save();
+        }
+
+        return redirect(route('pollingdetail-hasil'));
     }
+
+
 
     /**
      * Display the specified resource.
@@ -105,6 +159,6 @@ class PollingDetailContorller extends Controller
     public function destroy(PollingDetail $pollingDetail)
     {
         $pollingDetail->delete();
-        return redirect(route('pollingdetail-index'));
+        return redirect(route('pollingdetail-hasil'));
     }
 }

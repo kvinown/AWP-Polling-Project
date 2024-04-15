@@ -28,15 +28,16 @@
                 <a
                     class="nav-link active mx-1"
                     href="{{route('polling-index')}}"
-                >Polling Mata Kuliah</a
+                >Polling</a
                 >
+                <a class="nav-link active mx-1" href="{{ route('pollingdetail-hasil') }}">Hasil</a>
+                <a class="nav-link active mx-1" href="{{ route('pollingdetail-index') }}">Polling Mata Kuliah</a>
                 @if(auth()->user()->id_role == '1')
                 <div class="dropdown">
                     <a class="nav-link active mx-1 dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                         Menu
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <li><a class="dropdown-item" href="{{ route('pollingdetail-index') }}">Hasil</a></li>
                         <li><a class="dropdown-item" href="{{ route('fakultas-index') }}">Fakultas</a></li>
                         <li><a class="dropdown-item" href="{{ route('programstudi-index') }}">Program Studi</a></li>
                         <li><a class="dropdown-item" href="{{ route('kurikulum-index') }}">Kurikulum</a></li>

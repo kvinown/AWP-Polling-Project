@@ -19,6 +19,29 @@ return new class extends Migration
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
         });
+
+        \Illuminate\Support\Facades\DB::table('program_studi')->insert([
+            [
+                'id' => 1,
+                'nama' => 'Teknik Informatika',
+                'id_fakultas' => 1
+            ],
+            [
+                'id' => 2,
+                'nama' => 'Sistem Informasi',
+                'id_fakultas' => 1
+            ],
+            [
+                'id' => 3,
+                'nama' => 'Elektro',
+                'id_fakultas' => 2
+            ],
+            [
+                'id' => 4,
+                'nama' => 'Industri',
+                'id_fakultas' => 2
+            ]
+        ]);
     }
 
     /**

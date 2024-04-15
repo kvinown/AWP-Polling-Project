@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Middleware\Role;
+use App\Models\Polling;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -45,6 +46,7 @@ class UserController extends Controller
             'id_role' => ['required', 'string']
         ]);
 
+        // Buat pengguna baru
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -52,7 +54,13 @@ class UserController extends Controller
             'id_role' => $request->id_role
         ]);
 
+        // Buat data polling untuk pengguna baru
+        $polling = new Polling([
+            'id' => $user->id, // Gunakan ID pengguna sebagai ID polling
+            'status' => true, // Atur status ke false secara otomatis
+        ]);
 
+        $polling->save();
 
         return redirect(route('user-index'));
     }

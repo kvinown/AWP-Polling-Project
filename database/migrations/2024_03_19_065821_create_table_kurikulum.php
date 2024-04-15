@@ -18,6 +18,19 @@ return new class extends Migration
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
         });
+
+        \Illuminate\Support\Facades\DB::table('kurikulum')->insert([
+            [
+                'id' => 1,
+                'tahun' => 2022,
+                'semester'=> 4
+            ],
+            [
+                'id' => 2,
+                'tahun' => 2022,
+                'semester'=> 2
+            ]
+        ]);
     }
 
     /**

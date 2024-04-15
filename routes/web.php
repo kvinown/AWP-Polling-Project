@@ -114,6 +114,9 @@ Route::middleware('auth')->group(function () {
     Route::get('akun-create', [UserController::class, 'create'])->name('akun-create');
     Route::get('akun-delete/{user}', [UserController::class, 'destroy'])->name('akun-delete');
 
+    // Hasil
+    Route::get('pollingdetail-hasil', [PollingDetailContorller::class, 'hasil'])->name('pollingdetail-hasil');
+
 });
 
 require __DIR__.'/auth.php';

@@ -18,7 +18,7 @@
                         {{-- Nama --}}
                         <div class="form-group">
                             <label for="name">Nama</label>
-                            <input class="my-2 form-control" type="text" name="name" id="name" placeholder="Nama Fakultas" autofocus maxlength="255">
+                            <input class="my-2 form-control" type="text" name="name" id="name" placeholder="Nama" autofocus maxlength="255">
                         </div>
                         {{-- Email Address --}}
                         <div class="form-group">

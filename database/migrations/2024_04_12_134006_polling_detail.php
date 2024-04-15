@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('polling_detail', function (Blueprint $table) {
             $table->string('id', 10)->primary();
-            $table->unsignedBigInteger('id_users');
+            $table->unsignedBigInteger('id_user');
             $table->string('id_mata_kuliah', 10);
             $table->string('id_polling', 10);
-            $table->foreign('id_users')->references('id')->on('users')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign('id_user')->references('id')->on('users')->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('id_mata_kuliah')->references('id')->on('mata_kuliah')->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('id_polling')->references('id')->on('polling')->onUpdate('cascade')->onDelete('restrict');
             $table->timestamps();
@@ -26,8 +26,8 @@ return new class extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down()
     {
-        Schema::dropIfExists('table_polling_detail');
+        Schema::dropIfExists('polling_detail');
     }
 };
