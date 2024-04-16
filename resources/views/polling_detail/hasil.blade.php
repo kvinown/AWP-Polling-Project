@@ -22,7 +22,9 @@
                     <tr>
                         <th scope="col">ID Polling Detail</th>
                         <th scope="col">ID User</th>
+                        <th scope="col">Nama User</th>
                         <th scope="col">ID Mata Kuliah</th>
+                        <th scope="col">Nama Mata Kuliah</th>
                         <th scope="col">ID Polling</th>
                         @if(auth()->user()->id_role == '1')
                             <th scope="col">Delete</th>
@@ -35,7 +37,12 @@
                         <tr>
                             <td>{{$pd->id}}</td>
                             <td>{{$pd->id_user}}</td>
+                            <td>{{auth()->user()->name}}</td>
                             <td>{{$pd->id_mata_kuliah}}</td>
+                            @php
+                                $mataKuliah = $mks->firstWhere('id', $pd->id_mata_kuliah);
+                            @endphp
+                            <td>{{ $mataKuliah->nama ?? '' }}</td>
                             <td>{{$pd->id_polling}}</td>
                             @if(auth()->user()->id_role == '1')
                                 <td>
