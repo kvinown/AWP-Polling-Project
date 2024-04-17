@@ -21,18 +21,18 @@ class PollingDetail extends Model
 
     protected $primaryKey = 'id';
 
-    public function User(): BelongsTo
+    public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'id_user');
     }
 
-    public function MataKuliah() : BelongsTo
+    public function mataKuliah(): BelongsTo
     {
-        return $this->belongsTo(MataKuliah::class);
+        return $this->belongsTo(MataKuliah::class, 'id_mata_kuliah');
     }
 
-    public  function Polling() : BelongsTo
+    public function polling(): BelongsTo
     {
-        return $this->belongsTo(Polling::class);
+        return $this->belongsTo(Polling::class, 'id_polling');
     }
 }

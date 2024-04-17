@@ -37,12 +37,9 @@
                         <tr>
                             <td>{{$pd->id}}</td>
                             <td>{{$pd->id_user}}</td>
-                            <td>{{auth()->user()->name}}</td>
+                            <td>{{$pd->User->name}}</td>
                             <td>{{$pd->id_mata_kuliah}}</td>
-                            @php
-                                $mataKuliah = $mks->firstWhere('id', $pd->id_mata_kuliah);
-                            @endphp
-                            <td>{{ $mataKuliah->nama ?? '' }}</td>
+                            <td>{{$pd->mataKuliah->nama}}</td>
                             <td>{{$pd->id_polling}}</td>
                             @if(auth()->user()->id_role == '1')
                                 <td>

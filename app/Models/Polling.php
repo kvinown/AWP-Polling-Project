@@ -13,7 +13,10 @@ class Polling extends Model
 
     protected $fillable = [
         'id',
-        'status'
+        'status',
+        'nama',
+        'started_date',
+        'ended_date',
     ];
 
     protected $primaryKey = 'id';

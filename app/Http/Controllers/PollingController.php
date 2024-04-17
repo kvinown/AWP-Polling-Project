@@ -31,16 +31,23 @@ class PollingController extends Controller
      */
     public function store(Request $request)
     {
-        $userId = auth()->user()->id;
+        $validatedData = validator($request->all(), [
+            'id' => 'required|string|max:10|unique:polling', // Validasi bahwa ID polling harus unik di tabel polling
+            'nama' => 'required|string|max:100',
+            'started_date' => 'required|date',
+            'ended_date' => 'required|date|after_or_equal:started_date', // Validasi bahwa tanggal akhir harus setelah atau sama dengan tanggal mulai
+            'status' => 'required|string|max:100',
+        ], [
+            'id.unique' =>'ID Polling sudah terdaftar',
+            'id.required' =>'ID Polling harus diisi',
+            'nama.required' =>'Periode harus diisi',
+            'started_date.required' =>'Tanggal Mulai harus diisi',
+            'ended_date.required' =>'Tanggal Akhir harus diisi',
+            'ended_date.after_or_equal' =>'Tanggal Akhir harus setelah atau sama dengan Tanggal Mulai',
+            'status.required' =>'Status Polling harus diisi',
+        ])->validate();
 
-
-        // Simpan data polling dengan ID baru dan status false
-        $polling = new Polling([
-            'id' => $userId,
-            'status' => true, // Atur status ke false secara otomatis
-//            'started_date' => now(),
-//            'ended_date' => now(),
-        ]);
+        $polling = new Polling($validatedData);
         $polling->save();
 
         return redirect(route('polling-index'));

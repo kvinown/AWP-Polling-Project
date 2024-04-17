@@ -37,12 +37,8 @@
                                 <td>{{$mk->id}}</td>
                                 <td>{{$mk->nama}}</td>
                                 <td>{{$mk->sks}}</td>
-                                @php
-                                    $kurikulum = $kurs->firstWhere('id', $mk->id_kurikulum);
-                                    $programStudi = $progs->firstWhere('id', $mk->id_program_studi);
-                                @endphp
-                                <td>{{$kurikulum->tahun ?? ''}}</td>
-                                <td>{{$programStudi->nama ?? ''}}</td>
+                                <td>{{$mk->Kurikulum->nama}}</td>
+                                <td>{{$mk->programStudi->nama}}</td>
                                 @if(auth()->user()->id_role == '1')
                                 <td>
                                     <a href="{{ route('matakuliah-delete', ['mataKuliah' => $mk->id]) }}" role="button" class="btn btn-danger" onclick="return confirmDelete()">

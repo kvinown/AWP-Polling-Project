@@ -13,24 +13,14 @@ return new class extends Migration
     {
         Schema::create('polling', function (Blueprint $table) {
             $table->string('id', 10)->primary();
-//            $table->dateTime('started_date');
-//            $table->dateTime('ended_date');
-//            $table->integer('total_sks');
+            $table->string('nama', 100);
+            $table->dateTime('started_date');
+            $table->dateTime('ended_date');
             $table->boolean('status');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
         });
 
-        \Illuminate\Support\Facades\DB::table('polling')->insert([
-            [
-                'id' => 1,
-                'status' => true
-            ],
-            [
-                'id' => 2,
-                'nama' => true
-            ]
-        ]);
     }
 
     /**

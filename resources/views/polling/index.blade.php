@@ -21,6 +21,9 @@
                         <thead class="border border-dark">
                         <tr>
                             <th scope="col">ID Polling</th>
+                            <th scope="col">Periode Polling</th>
+                            <th scope="col">Tanggal Mulai</th>
+                            <th scope="col">Tanggal Selesai</th>
                             <th scope="col">Status Polling</th>
                             @if(auth()->user()->id_role == '1')
                             <th scope="col">Delete</th>
@@ -32,6 +35,9 @@
                         @foreach($pols as $pol)
                             <tr>
                                 <td>{{$pol->id}}</td>
+                                <td>{{$pol->nama}}</td>
+                                <td>{{$pol->started_date}}</td>
+                                <td>{{$pol->ended_date}}</td>
                                 <td>{{$pol->status}}</td>
                                 @if(auth()->user()->id_role == '1')
                                 <td>

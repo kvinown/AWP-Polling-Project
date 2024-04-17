@@ -18,75 +18,16 @@
                         {{ implode('', $errors->all(':message')) }}
                     </div>
                 @endif
-
-                <!-- Tambahkan kode ini untuk mengecek status polling -->
-                @if($status == false)
-                    <div>Anda sudah melakukan polling</div>
-                @else
-                    <!-- Formulir polling -->
-                    <form action="{{ route('pollingdetail-store') }}" method="post">
-                        @csrf
-                        <table class="mt-2 table table-bordered" width="100%">
-                            <thead class="border border-dark">
-                            <tr>
-                                <th scope="col">Check</th>
-                                <th scope="col">ID Mata Kuliah</th>
-                                <th scope="col">Nama Mata Kuliah</th>
-                                <th scope="col">SKS Mata Kuliah</th>
-                                <th scope="col">Kurikulum</th>
-                                <th scope="col">Program Studi</th>
-                                @if(auth()->user()->id_role == '1')
-                                    <th scope="col">Delete</th>
-                                    <th scope="col">Edit</th>
-                                @endif
-                            </tr>
-                            </thead>
-                            <tbody class="border border-dark">
-                            @foreach($mks as $mk)
-                                <tr>
-                                    <td>
-                                        <input type="checkbox" name="matakuliah[]" id="{{ $mk->nama }}" value="{{ $mk->id }}">
-                                    </td>
-                                    <td>{{ $mk->id }}</td>
-                                    <td>
-                                        <label for="{{ $mk->nama }}">
-                                            {{ $mk->nama }}
-                                        </label>
-                                    </td>
-                                    <td>{{ $mk->sks }}</td>
-                                    @php
-                                        $kurikulum = $kurs->firstWhere('id', $mk->id_kurikulum);
-                                        $programStudi = $progs->firstWhere('id', $mk->id_program_studi);
-                                    @endphp
-                                    <td>{{ $kurikulum->tahun ?? '' }}</td>
-                                    <td>{{ $programStudi->nama ?? '' }}</td>
-                                    @if(auth()->user()->id_role == '1')
-                                        <td>
-                                            <a href="{{ route('matakuliah-delete', ['mataKuliah' => $mk->id]) }}" role="button" class="btn btn-danger" onclick="return confirmDelete()">
-                                                <i class="fas fa-trash"></i>
-                                            </a>
-                                            <script>
-                                                function confirmDelete() {
-                                                    return confirm("Apakah Anda yakin menghapus data ini?");
-                                                }
-                                            </script>
-                                        </td>
-                                        <td>
-                                            <a href="{{ route('matakuliah-edit', ['mataKuliah' => $mk->id]) }}" role="button" class="btn btn-warning">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
-                                        </td>
-                                    @endif
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                        <div class="card-footer">
-                            {{-- Submit --}}
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
-                    </form>
-                @endif
+                <form method="post" action="{{ route('pollingdetail-create') }}">
+                    @csrf
+                    <label for="id_polling">Pilih Periode:</label>
+                    <select name="id_polling" id="id_polling">
+                        @foreach($pols as $pol)
+                            <option value="{{ $pol->id }},{{ $pol->nama }}">{{ $pol->id }} - {{ $pol->nama }}</option>
+                        @endforeach
+                    </select>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
             </div>
         </div>
     </section>

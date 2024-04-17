@@ -11,6 +11,7 @@ class MataKuliah extends Model
     use HasFactory;
 
     protected $table = 'mata_kuliah';
+    public $incrementing = false;
 
     protected $fillable = [
         'id',
@@ -22,13 +23,13 @@ class MataKuliah extends Model
 
     protected $primaryKey = 'id';
 
-    public function Kurikulum() : BelongsTo
+    public function kurikulum(): BelongsTo
     {
-        return $this->BelongsTo(Kurikulum::class);
+        return $this->belongsTo(Kurikulum::class, 'id_kurikulum');
     }
 
-    public function ProgramStudi() : BelongsTo
+    public function programStudi(): BelongsTo
     {
-        return $this->belongsTo(ProgramStudi::class);
+        return $this->belongsTo(ProgramStudi::class, 'id_program_studi');
     }
 }

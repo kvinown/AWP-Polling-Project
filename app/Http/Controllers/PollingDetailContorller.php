@@ -19,25 +19,10 @@ class PollingDetailContorller extends Controller
     public function index()
     {
         $role = auth()->user()->id_role;
-        $status = null;
-        $id_polling = auth()->user()->id;
-        if($role == 2) {
-
-            $pollingDetail = PollingDetail::where('id_polling', $id_polling)->get();
-
-            $polling = Polling::findOrFail($id_polling);
-            $status = $polling->status;
-        } else if ($role == 1) {
-            $polling = Polling::all();
-            $pollingDetail = PollingDetail::all();
-            $pollingStatus = Polling::findOrFail($id_polling);
-            $status = $pollingStatus->status;
-        }
         return view('polling_detail.index', [
             'role' => $role,
-            'status' => $status,
-            'pds' => $pollingDetail,
-            'pol' => $polling,
+            'pds' => PollingDetail::all(),
+            'pols' => Polling::all(),
             'users' => User::all(),
             'mks' => MataKuliah::all(),
             'kurs' => Kurikulum::all(),
@@ -46,15 +31,11 @@ class PollingDetailContorller extends Controller
     }
 public function hasil()
     {
-        $id_polling = auth()->user()->id;
-
-        $pollingDetail = PollingDetail::where('id_polling', $id_polling)->get();
-
-        $polling = Polling::findOrFail($id_polling);
-
+        $role = auth()->user()->id_role;
         return view('polling_detail.hasil', [
-            'pds' => $pollingDetail,
-            'pol' => $polling,
+            'role' => $role,
+            'pds' => PollingDetail::all(),
+            'pols' => Polling::all(),
             'users' => User::all(),
             'mks' => MataKuliah::all(),
             'kurs' => Kurikulum::all(),
@@ -66,12 +47,21 @@ public function hasil()
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
+        $idPolling = $request->input('id_polling');
+
+        $pollingData = explode(',', $idPolling);
+        $id = $pollingData[0];
+        $nama = $pollingData[1];
         return view('polling_detail.create', [
-            'pol' => Polling::all(),
+            'pds' => PollingDetail::all(),
+            'id_pol' => $id,
+            'nama_pol' => $nama,
             'users' => User::all(),
             'mks' => MataKuliah::all(),
+            'kurs' => Kurikulum::all(),
+            'progs' => ProgramStudi::all(),
         ]);
     }
 
@@ -85,18 +75,17 @@ public function hasil()
             'matakuliah.*' => 'exists:mata_kuliah,id',
         ]);
 
-        $id_user = auth()->user()->id; // Assign user ID
-        $id_polling = auth()->user()->id; // Assign polling ID (mungkin sebaiknya gunakan id polling yang sesuai dari input)
+        $id_user = auth()->user()->id;
+        $id_polling = $request->input('id_polling');
 
-        $increment = 0;
+        $inc = 0;
         foreach ($validatedData['matakuliah'] as $matakuliahId) {
-            $pollingDetailId = $id_polling . '_' . $increment;
-            $increment += 1;
+            $pollingDetailId = $id_polling . '_' . $inc;
+            $inc += 1;
 
-            // Create polling detail record
             $data = [
                 'id'=> $pollingDetailId,
-                'id_user' => $id_user, // Set 'id_users' to current user ID
+                'id_user' => $id_user,
                 'id_polling' => $id_polling,
                 'id_mata_kuliah' => $matakuliahId,
             ];
