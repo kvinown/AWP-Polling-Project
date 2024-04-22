@@ -54,15 +54,10 @@ class UserController extends Controller
             'id_role' => $request->id_role
         ]);
 
-        // Buat data polling untuk pengguna baru
-        $polling = new Polling([
-            'id' => $user->id, // Gunakan ID pengguna sebagai ID polling
-            'status' => true, // Atur status ke false secara otomatis
-        ]);
 
-        $polling->save();
-
-        return redirect(route('user-index'));
+        $nama = $user['name'];
+        $success = "Data $nama berhasil ditambah";
+        return redirect(route('user-index'))->with('success', $success);
     }
 
     /**
@@ -108,7 +103,9 @@ class UserController extends Controller
 
 
 
-        return redirect(route('user-index'));
+        $nama = $user['name'];
+        $success = "Data $nama berhasil ditambah";
+        return redirect(route('user-index'))->with('success', $success);
     }
 
     /**
@@ -117,6 +114,8 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user -> delete();
-        return redirect(route('user-index'));
+        $nama = $user->name;
+        $success = "Data $nama berhasil ditambah";
+        return redirect(route('user-index'))->with('success', $success);
     }
 }

@@ -1,39 +1,34 @@
-    @extends('layouts.master')
+@extends('layouts.master')
 
-    @section('web-content')
-        <!-- Header -->
-        @include('layouts.header-fakultas')
-        <!-- End Header -->
-        <section class="content">
-            <div class="container">
-                <div class="card">
-                    <div class="row d-flex">
-                        <h5 class="card-title col-md">Data Fakultas</h5>
-                        <a
-                            href="{{route('fakultas-create')}}"
-                            class="col-md-1 btn btn-primary ms-auto">
-                            Tambah
-                        </a>
-                    </div>
-                    <table
-                        class="mt-2 table table-bordered"
-                        width="100%">
-                        <thead class="border border-dark">
-                        <tr>
-                            <th scope="col">ID Fakultas</th>
-                            <th scope="col">Nama Fakultas</th>
-                            @if(auth()->user()->id_role == '1')
+@section('web-content')
+    <!-- Header -->
+    @include('layouts.header-fakultas')
+    <!-- End Header -->
+    <section class="content">
+        <div class="container">
+            <div class="card">
+                <div class="row d-flex">
+                    <h5 class="card-title col-md">Data Fakultas</h5>
+                    <a href="{{route('fakultas-create')}}" class="col-md-1 btn btn-primary ms-auto">Tambah</a>
+                </div>
+
+                <table class="mt-2 table table-bordered" width="100%">
+                    <thead class="border border-dark">
+                    <tr>
+                        <th scope="col">ID Fakultas</th>
+                        <th scope="col">Nama Fakultas</th>
+                        @if(auth()->user()->id_role == '1')
                             <th scope="col">Delete</th>
                             <th scope="col">Edit</th>
-                            @endif
-                        </tr>
-                        </thead>
-                        <tbody class="border border-dark">
-                        @foreach($faks as $fak)
-                            <tr>
-                                <td>{{$fak->id}}</td>
-                                <td>{{$fak->nama}}</td>
-                                @if(auth()->user()->id_role == '1')
+                        @endif
+                    </tr>
+                    </thead>
+                    <tbody class="border border-dark">
+                    @foreach($faks as $fak)
+                        <tr>
+                            <td>{{$fak->id}}</td>
+                            <td>{{$fak->nama}}</td>
+                            @if(auth()->user()->id_role == '1')
                                 <td>
                                     <a href="{{ route('fakultas-delete', ['fakultas' => $fak->id]) }}" role="button" class="btn btn-danger" onclick="return confirmDelete()">
                                         <i class="fas fa-trash"></i>
@@ -49,12 +44,25 @@
                                         <i class="fas fa-edit"></i>
                                     </a>
                                 </td>
-                                @endif
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-                </div>
+                            @endif
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
             </div>
-        </section>
-    @endsection
+        </div>
+    </section>
+@endsection
+
+@section('scripts')
+    <script>
+        // Inisialisasi toast menggunakan JavaScript
+        var toastEl = document.getElementById('toast');
+        var toast = new bootstrap.Toast(toastEl);
+
+        // Tampilkan toast jika session success ada
+        if ("{{ session('success') }}") {
+            toast.show();
+        }
+    </script>
+@endsection

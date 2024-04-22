@@ -49,7 +49,9 @@ class ProgramStudiController extends Controller
 
         $programStudi = new ProgramStudi($validatedData);
         $programStudi->save();
-        return redirect(route('programstudi-index'));
+        $nama = $validatedData['nama'];
+        $success = "Data $nama berhasil ditambah";
+        return redirect(route('programstudi-index'))->with('success', $success);
     }
 
     /**
@@ -87,7 +89,9 @@ class ProgramStudiController extends Controller
         $programStudi -> nama = $validatedData['nama'];
         $programStudi -> id_fakultas = $validatedData['id_fakultas'];
         $programStudi->save();
-        return redirect(route('programstudi-index'));
+        $nama = $validatedData['nama'];
+        $success = "Data $nama berhasil diubah";
+        return redirect(route('programstudi-index'))->with('success', $success);
     }
 
     /**
@@ -96,6 +100,8 @@ class ProgramStudiController extends Controller
     public function destroy(ProgramStudi $programStudi)
     {
         $programStudi->delete();
-        return redirect(route('programstudi-index'));
+        $nama = $programStudi->nama;
+        $success = "Data $nama berhasil dihapus";
+        return redirect(route('programstudi-index'))->with('success', $success);
     }
 }

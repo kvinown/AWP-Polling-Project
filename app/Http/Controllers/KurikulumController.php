@@ -44,7 +44,9 @@ class KurikulumController extends Controller
 
         $kurikulum = new Kurikulum($validedData);
         $kurikulum->save();
-        return redirect(route('kurikulum-index'));
+        $tahun = $validedData['tahun'];
+        $success = "Kurikulum $tahun berhasil ditambah";
+        return redirect(route('kurikulum-index'))->with('success', $success);
     }
 
     /**
@@ -79,7 +81,9 @@ class KurikulumController extends Controller
         ])->validate();
 
         $kurikulum->update($validatedData);
-        return redirect(route('kurikulum-index'));
+        $tahun = $validatedData['tahun'];
+        $success = "Kurikulum $tahun berhasil diubah";
+        return redirect(route('kurikulum-index'))->with('success', $success);
     }
 
     /**
@@ -88,6 +92,8 @@ class KurikulumController extends Controller
     public function destroy(Kurikulum $kurikulum)
     {
         $kurikulum ->delete();
-        return redirect(route('kurikulum-index'));
+        $tahun = $kurikulum->tahun;
+        $success = "Kurikulum $tahun berhasil dihapus";
+        return redirect(route('kurikulum-index'))->with('success', $success);
     }
 }

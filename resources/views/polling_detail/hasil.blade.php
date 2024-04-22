@@ -9,11 +9,6 @@
             <div class="card">
                 <div class="row d-flex">
                     <h5 class="card-title col-md">Data Polling Detail</h5>
-                    <a
-                        href="{{route('pollingdetail-create')}}"
-                        class="col-md-1 btn btn-primary ms-auto">
-                        Tambah
-                    </a>
                 </div>
                 <table
                     class="mt-2 table table-bordered"

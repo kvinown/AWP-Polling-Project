@@ -31,7 +31,7 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        $validedData = validator($request->all(), [
+        $validatedData = validator($request->all(), [
             'id' => 'required|string|max:10|unique:role',
             'nama' => 'required|string|max:100',
         ], [
@@ -40,9 +40,11 @@ class RoleController extends Controller
             'nama.required' => 'Nama Role harus diisi',
         ])->validate();
 
-        $role = new Role($validedData);
+        $role = new Role($validatedData);
         $role->save();
-        return redirect(route('role-index'));
+        $nama = $validedData['nama'];
+        $success = "Data $nama berhasil ditambah";
+        return redirect(route('role-index'))->with('success', $success);
     }
 
     /**
@@ -75,6 +77,8 @@ class RoleController extends Controller
     public function destroy(Role $role)
     {
         $role ->delete();
-        return redirect(route('role-index'));
+        $nama = $role->nama;
+        $success = "Data $nama berhasil dihapus";
+        return redirect(route('role-index'))->with('success', $success);
     }
 }

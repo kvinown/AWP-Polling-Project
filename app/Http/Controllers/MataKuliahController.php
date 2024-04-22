@@ -54,7 +54,9 @@ class MataKuliahController extends Controller
 
         $mataKuliah = new MataKuliah($validatedData);
         $mataKuliah->save();
-        return redirect(route('matakuliah-index'));
+        $nama = $validatedData['nama'];
+        $success = "Data $nama berhasil ditambah";
+        return redirect(route('matakuliah-index'))->with('success', $success);
     }
 
     /**
@@ -70,7 +72,11 @@ class MataKuliahController extends Controller
      */
     public function edit(MataKuliah $mataKuliah)
     {
-        //
+        return view('mata_kuliah.edit', [
+            'mk'=>$mataKuliah,
+            'kurs' => Kurikulum::all(),
+            'progs' => ProgramStudi::all(),
+        ]);
     }
 
     /**
@@ -78,7 +84,21 @@ class MataKuliahController extends Controller
      */
     public function update(Request $request, MataKuliah $mataKuliah)
     {
-        //
+        $validatedData = validator($request->all(), [
+            'nama' => 'required|string|max:100',
+            'sks' => 'required|integer',
+            'id_kurikulum' => 'required|string',
+            'id_program_studi' => 'required|string',
+        ], [
+            'nama.required' => 'Nama Mata Kuliah harus diisi',
+            'id_kurikulum.required' => 'Kurikulum harus dipilih',
+            'id_program_studi.required' => 'Program Studi harus dipilih',
+        ])->validate();
+
+        $mataKuliah->update($validatedData);
+        $nama = $validatedData['nama'];
+        $success = "Data $nama berhasil diubah";
+        return redirect(route('matakuliah-index'))->with('success', $success);
     }
 
     /**
@@ -87,6 +107,8 @@ class MataKuliahController extends Controller
     public function destroy(MataKuliah $mataKuliah)
     {
         $mataKuliah->delete();
-        return redirect(route('matakuliah-index'));
+        $nama = $mataKuliah->nama;
+        $success = "Data $nama berhasil dihapus";
+        return redirect(route('matakuliah-index'))->with('success', $success);
     }
 }

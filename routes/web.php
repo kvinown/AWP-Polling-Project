@@ -63,6 +63,7 @@ Route::middleware(['auth', '1'])->group(function () {
     Route::get('fakultas-create', [FakultasController::class, 'create'])->name('fakultas-create');
     Route::post('fakultas-store', [FakultasController::class, 'store'])->name('fakultas-store');
     Route::get('fakultas-delete/{fakultas}', [FakultasController::class, 'destroy'])->name('fakultas-delete');
+    Route::delete('fakultas-delete/{fakultas}', [FakultasController::class, 'destroy'])->name('fakultas-delete');
     Route::get('fakultas-edit/{fakultas}', [FakultasController::class, 'edit'])->name('fakultas-edit');
     Route::post('fakultas-update/{fakultas}', [FakultasController::class, 'update'])->name('fakultas-update');
 

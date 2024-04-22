@@ -22,6 +22,7 @@
                 <!-- Formulir polling -->
                 <form action="{{ route('pollingdetail-store') }}" method="post">
                     @csrf
+                    <input type="hidden" name="id_polling" id="id_polling" value="{{ $id_pol }}">
                     <table class="mt-2 table table-bordered" width="100%">
                         <thead class="border border-dark">
                         <tr>
@@ -42,7 +43,6 @@
                             <tr>
                                 <td>
                                     <input type="checkbox" name="matakuliah[]" id="{{ $mk->nama }}" value="{{ $mk->id }}">
-                                    <input type="hidden" name="id_polling" id="id_polling" value="{{ $id_pol }}">
                                 </td>
                                 <td>{{ $mk->id }}</td>
                                 <td>

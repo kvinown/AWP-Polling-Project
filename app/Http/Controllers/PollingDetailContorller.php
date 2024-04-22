@@ -18,18 +18,23 @@ class PollingDetailContorller extends Controller
      */
     public function index()
     {
-        $role = auth()->user()->id_role;
+        $pollings = Polling::all();
+
+        $pollingValid = $pollings->contains('status', true) && $pollings->contains(function ($polling) {
+                return now()->between($polling->started_date, $polling->ended_date);
+            });
         return view('polling_detail.index', [
-            'role' => $role,
-            'pds' => PollingDetail::all(),
+            'pollingValid' => $pollingValid,
             'pols' => Polling::all(),
+            'pds' => PollingDetail::all(),
             'users' => User::all(),
             'mks' => MataKuliah::all(),
             'kurs' => Kurikulum::all(),
             'progs' => ProgramStudi::all(),
         ]);
     }
-public function hasil()
+
+    public function hasil()
     {
         $role = auth()->user()->id_role;
         $id_user = auth()->user()->id;
@@ -99,13 +104,10 @@ public function hasil()
             ];
             $pollingDetail = new PollingDetail($data);
             $pollingDetail->save();
-
-            $polling = Polling::findOrFail($id_polling);
-            $polling -> status = false;
-            $polling->save();
         }
-
-        return redirect(route('pollingdetail-hasil'));
+        $nama = auth()->user()->nama;
+        $success = "Data Polling $nama berhasil di input";
+        return redirect(route('pollingdetail-hasil'))->with('success', $success);
     }
 
 

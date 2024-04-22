@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('id_polling', 10);
             $table->foreign('id_user')->references('id')->on('users')->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('id_mata_kuliah')->references('id')->on('mata_kuliah')->onUpdate('cascade')->onDelete('restrict');
-            $table->foreign('id_polling')->references('id')->on('polling')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign('id_polling')->references('id')->on('polling')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
