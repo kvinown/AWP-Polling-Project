@@ -32,9 +32,17 @@ class PollingDetailContorller extends Controller
 public function hasil()
     {
         $role = auth()->user()->id_role;
+        $id_user = auth()->user()->id;
+
+        if ($role == 1) {
+            $polling_detail = PollingDetail::all();
+        } else if ($role == 3) {
+            $polling_detail = PollingDetail::where('id_user', $id_user)->get();
+        }
+
         return view('polling_detail.hasil', [
             'role' => $role,
-            'pds' => PollingDetail::all(),
+            'pds' => $polling_detail,
             'pols' => Polling::all(),
             'users' => User::all(),
             'mks' => MataKuliah::all(),

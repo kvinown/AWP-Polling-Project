@@ -16,7 +16,7 @@
                 </div>
                 <div class="col-md d-flex">
                     <div class="col-md">
-                        <h1>Vision</h1>
+                        <h1>Testing</h1>
                         <h5>
                             Maranatha Christian University becomes an indpendent and self-supporting institution of higher education which explores and instills knowledge in all areas of arts and sciences, motivated by the love and living examples of
                             Jesus Christ
