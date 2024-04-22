@@ -29,8 +29,12 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
+Route::get('/login_ex', function () {
+    return view('login');
+});
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
