@@ -7,6 +7,7 @@
     <section class="content">
         <div class="container">
             <div class="row d-block text-dark">
+
                 <div class="col-md text-center">
                     <img
                         width="50%"

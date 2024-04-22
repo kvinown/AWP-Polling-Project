@@ -28,6 +28,22 @@
                     </select>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
+
+                <div class="design">
+                    <h6>Gagal perwalian dapat dikarenakan:
+                        <ul>
+                            <li>Perwalian di luar jadwal yang ditentukan</li>
+                            <li>Kewajiban keuangan mahasiswa belum terpenuhi</li>
+                            <li>Tidak terdaftar sebagai mahasiswa aktif</li>
+                            <li>Belum mengembalikan pinjaman buku</li>
+                        </ul>
+                        Informasi Perwalian:
+                        <ul>
+                            <li>Mata kuliah berwarna merah: mata kuliah dengan prasyarat / mata kuliah yang belum diambil</li>
+                            <li>Mata kuliah berwarna hitam: mata kuliah yang sudah diambil</li>
+                        </ul>
+                    </h6>
+                </div>
             </div>
         </div>
     </section>

@@ -32,6 +32,34 @@
         .footer-height {
             min-height: 130px;
         }
+        .design {
+            background-color: #D9D9D9;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 440px;
+            margin-bottom: 20px;
+        }
+        h6 {
+            margin: 0;
+        }
+
+        ul {
+            padding-inline-start: 20px;
+        }
+         .content {
+             background-image: url("img/BG PWL.png");
+             background-size: cover; /* Ensures image covers the entire container */
+             background-repeat: no-repeat; /* Prevents image tiling */
+             background-position: center; /* Centers image horizontally */
+             position: relative; /* Allows absolute positioning of elements within */
+         }
+        .login-button {
+            width: 200px    ;
+            position: absolute; /* Positions button absolutely within the content section */
+            bottom: 20px; /* Adjust vertical position as needed based on your image */
+            right: 20px; /* Adjust horizontal position as needed based on your image */
+            /* Add other styles for the button (size, border, etc.) */
+        }
     </style>
 </head>
 <body>
