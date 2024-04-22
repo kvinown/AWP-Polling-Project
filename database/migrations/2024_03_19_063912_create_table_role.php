@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('role', function (Blueprint $table) {
             $table->string('id', 10)->primary();
-            $table->string('nama', 10);
+            $table->string('nama', 50);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
         });
@@ -27,7 +27,13 @@ return new class extends Migration
             ],
             [
                 'id' => 2,
-                'nama' => 'User',
+                'nama' => 'Kepala Program Studi',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'id' => 3,
+                'nama' => 'Mahasiswa',
                 'created_at' => now(),
                 'updated_at' => now()
             ]

@@ -26,16 +26,22 @@ return new class extends Migration
         \Illuminate\Support\Facades\DB::table('users')->insert([
             [
                 'name' => 'John Doe',
-                'email' => 'john@gmail.com',
-                'password' => bcrypt('12345678'),
-                'id_role' => '1'
+                'email' => 'admin@gmail.com',
+                'password' => Hash::make('admin12345*'),
+                'id_role' => 1
             ],
             [
                 'name' => 'Doe John',
                 'email' => 'Doe@gmail.com',
-                'password' => bcrypt('12345678'),
-                'id_role' => '2'
+                'password' => Hash::make('kaprodi12345*'),
+                'id_role' => 2
             ],
+            [
+                'name' => 'Kevin Owen',
+                'email' => '2272007@maranatha.ac.id',
+                'password' => Hash::make('ukm12345*'),
+                'id_role' => 3
+            ]
         ]);
 
 

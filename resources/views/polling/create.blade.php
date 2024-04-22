@@ -34,11 +34,15 @@
                         </div>
                         {{-- Status --}}
                         <div class="form-group">
-                            <label for="status">Status Polling</label>
-                            <input class="my-2 form-control" type="radio" value="1" name="status" id="status" placeholder="Status Polling" autofocus maxlength="100">
-                            <label for="status">Aktif</label>
-                            <input class="my-2 form-control" type="radio" value="0" name="status" id="status" placeholder="Status Polling" autofocus maxlength="100">
-                            <label for="status">Non Aktif</label>
+                            <label>Status Polling:</label><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" value="1" name="status" id="status1">
+                                <label class="form-check-label" for="status1">Aktif</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" value="0" name="status" id="status2">
+                                <label class="form-check-label" for="status2">Non Aktif</label>
+                            </div>
                         </div>
 
                     </div>

@@ -15,14 +15,15 @@ class Role
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if ($request->user()->id_role == '1') {
-            $request->attributes->add(['role' => 'admin']);
-        } else if ($request->user()->id_role == '2') {
-            $request->attributes->add(['role'=>'user']);
+        if (
+            $request->user()->id_role == '1' ||
+            $request->user()->id_role == '2' ||
+            $request->user()->id_role == '3'
+        ) {
+            return $next($request);
         } else {
             return redirect(route('home'));
         }
 
-        return $next($request);
     }
 }

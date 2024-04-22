@@ -80,7 +80,7 @@ public function hasil()
 
         $inc = 0;
         foreach ($validatedData['matakuliah'] as $matakuliahId) {
-            $pollingDetailId = $id_polling . '_' . $inc;
+            $pollingDetailId = $id_user . '_' . $id_polling . '_' . $inc;
             $inc += 1;
 
             $data = [
