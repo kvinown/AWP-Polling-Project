@@ -49,8 +49,9 @@ class PollingController extends Controller
 
         $polling = new Polling($validatedData);
         $polling->save();
-
-        return redirect(route('polling-index'));
+        $nama = $validatedData['nama'];
+        $success = "Data $nama berhasil ditambah";
+        return redirect(route('polling-index')) -> with('success', $success);
     }
 
     /**
@@ -84,7 +85,9 @@ class PollingController extends Controller
 
         $polling -> status = $validatedData['status'];
         $polling->save();
-        return redirect(route('polling-index'));
+        $nama = $validatedData['nama'];
+        $success = "Data $nama berhasil diubah";
+        return redirect(route('polling-index'))->with('success', $success);
     }
 
     /**
@@ -93,6 +96,8 @@ class PollingController extends Controller
     public function destroy(Polling $polling)
     {
         $polling ->delete();
-        return redirect(route('polling-index'));
+        $nama = $polling->nama;
+        $success = "Data $nama berhasil dihapus";
+        return redirect(route('polling-index'))->with('success', $success);
     }
 }

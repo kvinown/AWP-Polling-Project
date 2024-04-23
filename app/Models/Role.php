@@ -10,6 +10,7 @@ class Role extends Model
     use HasFactory;
 
     protected  $table = 'role';
+    public $incrementing = false;
 
     protected  $fillable = [
         'id',

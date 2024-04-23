@@ -37,7 +37,7 @@
                                 <td>{{$mk->id}}</td>
                                 <td>{{$mk->nama}}</td>
                                 <td>{{$mk->sks}}</td>
-                                <td>{{$mk->Kurikulum->nama}}</td>
+                                <td>{{$mk->Kurikulum->tahun}}</td>
                                 <td>{{$mk->programStudi->nama}}</td>
                                 @if(auth()->user()->id_role == '1')
                                 <td>

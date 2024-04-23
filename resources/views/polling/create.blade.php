@@ -30,7 +30,7 @@
                         </div>
                         <div class="form-group">
                             <label for="ended_date">Tanggal Akhir</label>
-                            <input class="my-2 form-control" type="date" name="ended_date" id="ended_date" placeholder="Tanggal Mulai" autofocus maxlength="100">
+                            <input class="my-2 form-control" type="date" name="ended_date" id="ended_date" placeholder="Tanggal Akhir" autofocus maxlength="100">
                         </div>
                         {{-- Status --}}
                         <div class="form-group">

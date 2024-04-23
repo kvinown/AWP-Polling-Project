@@ -31,7 +31,7 @@ class FakultasController extends Controller
      */
     public function store(Request $request)
     {
-        $validedData = validator($request->all(), [
+        $validatedData = validator($request->all(), [
             'id' => 'required|string|max:10|unique:fakultas',
             'nama' => 'required|string|max:100'
         ], [
@@ -39,10 +39,12 @@ class FakultasController extends Controller
             'id.required' =>'ID Fakultas harus diisi',
             'nama.required' =>'Nama Fakultas harus diisi',
         ])->validate();
-
-        $fakultas = new Fakultas($validedData);
+        $fakultas = new Fakultas($validatedData);
         $fakultas->save();
-        return redirect(route('fakultas-index'));
+        $nama = $validatedData['nama'];
+        $success = "Data $nama berhasil ditambah";
+        return redirect(route('fakultas-index'))->with('success', $success
+        );
     }
 
     /**
@@ -76,7 +78,9 @@ class FakultasController extends Controller
 
         $fakultas -> nama = $validatedData['nama'];
         $fakultas->save();
-        return redirect(route('fakultas-index'));
+        $nama = $validatedData['nama'];
+        $success = "Data $nama berhasil diubah";
+        return redirect(route('fakultas-index'))->with('success', $success);
     }
 
     /**
@@ -84,7 +88,9 @@ class FakultasController extends Controller
      */
     public function destroy(Fakultas $fakultas)
     {
-        $fakultas -> delete();
-        return redirect(route('fakultas-index'));
+        $fakultas->delete();
+        $nama = $fakultas->nama;
+        $success = "Data $nama berhasil dihapus";
+        return redirect(route('fakultas-index'))->with('success', $success);
     }
 }

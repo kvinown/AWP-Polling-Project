@@ -63,40 +63,9 @@ Route::middleware(['auth', '1'])->group(function () {
     Route::get('fakultas-create', [FakultasController::class, 'create'])->name('fakultas-create');
     Route::post('fakultas-store', [FakultasController::class, 'store'])->name('fakultas-store');
     Route::get('fakultas-delete/{fakultas}', [FakultasController::class, 'destroy'])->name('fakultas-delete');
+    Route::delete('fakultas-delete/{fakultas}', [FakultasController::class, 'destroy'])->name('fakultas-delete');
     Route::get('fakultas-edit/{fakultas}', [FakultasController::class, 'edit'])->name('fakultas-edit');
     Route::post('fakultas-update/{fakultas}', [FakultasController::class, 'update'])->name('fakultas-update');
-
-    // Kurikulum
-    Route::get('kurikulum-index', [KurikulumController::class, 'index'])->name('kurikulum-index');
-    Route::get('kurikulum-create', [KurikulumController::class, 'create'])->name('kurikulum-create');
-    Route::post('kurikulum-store', [KurikulumController::class, 'store'])->name('kurikulum-store');
-    Route::get('kurikulum-delete/{kurikulum}', [KurikulumController::class, 'destroy'])->name('kurikulum-delete');
-    Route::get('kurikulum-edit/{kurikulum}', [KurikulumController::class, 'edit'])->name('kurikulum-edit');
-    Route::post('kurikulum-update/{kurikulum}', [KurikulumController::class, 'update'])->name('kurikulum-update');
-
-    // Mata Kuliah
-    Route::get('matakuliah-index', [MataKuliahController::class, 'index'])->name('matakuliah-index');
-    Route::get('matakuliah-create', [MataKuliahController::class, 'create'])->name('matakuliah-create');
-    Route::post('matakuliah-store', [MataKuliahController::class, 'store'])->name('matakuliah-store');
-    Route::get('matakuliah-delete/{mataKuliah}', [MataKuliahController::class, 'destroy'])->name('matakuliah-delete');
-    Route::get('matakuliah-edit/{mataKuliah}', [MataKuliahController::class, 'edit'])->name('matakuliah-edit');
-    Route::post('matakuliah-update/{mataKuliah}', [MataKuliahController::class, 'update'])->name('matakuliah-update');
-
-    // Polling
-    Route::get('polling-index', [PollingController::class, 'index'])->name('polling-index');
-    Route::get('polling-create', [PollingController::class, 'create'])->name('polling-create');
-    Route::post('polling-store', [PollingController::class, 'store'])->name('polling-store');
-    Route::get('polling-delete/{polling}', [PollingController::class, 'destroy'])->name('polling-delete');
-    Route::get('polling-edit/{polling}', [PollingController::class, 'edit'])->name('polling-edit');
-    Route::post('polling-update/{polling}', [PollingController::class, 'update'])->name('polling-update');
-
-    // Polling Detail
-    Route::get('pollingdetail-index', [PollingDetailContorller::class, 'index'])->name('pollingdetail-index');
-    Route::post('pollingdetail-create', [PollingDetailContorller::class, 'create'])->name('pollingdetail-create');
-    Route::post('pollingdetail-store', [PollingDetailContorller::class, 'store'])->name('pollingdetail-store');
-    Route::get('pollingdetail-delete/{pollingDetail}', [PollingDetailContorller::class, 'destroy'])->name('pollingdetail-delete');
-    Route::get('pollingdetail-edit/{pollingDetail}', [PollingDetailContorller::class, 'edit'])->name('pollingdetail-edit');
-    Route::post('pollingdetail-update/{pollingDetail}', [PollingDetailContorller::class, 'update'])->name('pollingdetail-update');
 
     // Program Studi
     Route::get('programstudi-index', [ProgramStudiController::class, 'index'])->name('programstudi-index');
@@ -113,9 +82,6 @@ Route::middleware(['auth', '1'])->group(function () {
     Route::get('role-delete/{role}', [RoleController::class, 'destroy'])->name('role-delete');
     Route::get('role-edit/{role}', [RoleController::class, 'edit'])->name('role-edit');
     Route::post('role-update/{role}', [RoleController::class, 'update'])->name('role-update');
-
-    // Hasil
-    Route::get('pollingdetail-hasil', [PollingDetailContorller::class, 'hasil'])->name('pollingdetail-hasil');
 
 });
 
@@ -162,11 +128,35 @@ Route::middleware(['auth', '2'])->group(function () {
     Route::post('pollingdetail-update/{pollingDetail}', [PollingDetailContorller::class, 'update'])->name('pollingdetail-update');
 
     // Hasil
+    Route::get('pollingdetail-hasil-detail/{id_mata_kuliah}', [PollingDetailContorller::class, 'hasilDetail'])->name('pollingdetail-hasil-detail');
     Route::get('pollingdetail-hasil', [PollingDetailContorller::class, 'hasil'])->name('pollingdetail-hasil');
 
 });
 
 // Middleware Mahasiswa
+Route::middleware(['auth', '3'])->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('home', function () {
+        return view('home');
+    })->name('home');
+    Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
+
+
+    // Polling Detail
+    Route::get('pollingdetail-index', [PollingDetailContorller::class, 'index'])->name('pollingdetail-index');
+    Route::post('pollingdetail-create', [PollingDetailContorller::class, 'create'])->name('pollingdetail-create');
+    Route::post('pollingdetail-store', [PollingDetailContorller::class, 'store'])->name('pollingdetail-store');
+    Route::get('pollingdetail-delete/{pollingDetail}', [PollingDetailContorller::class, 'destroy'])->name('pollingdetail-delete');
+    Route::get('pollingdetail-edit/{pollingDetail}', [PollingDetailContorller::class, 'edit'])->name('pollingdetail-edit');
+    Route::post('pollingdetail-update/{pollingDetail}', [PollingDetailContorller::class, 'update'])->name('pollingdetail-update');
+
+    // Hasil
+    Route::get('pollingdetail-hasil-detail/{id_mata_kuliah}', [PollingDetailContorller::class, 'hasilDetail'])->name('pollingdetail-hasil-detail');
+
+});
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -185,7 +175,7 @@ Route::middleware('auth')->group(function () {
     Route::post('pollingdetail-update/{pollingDetail}', [PollingDetailContorller::class, 'update'])->name('pollingdetail-update');
 
     // Hasil
-    Route::get('pollingdetail-hasil', [PollingDetailContorller::class, 'hasil'])->name('pollingdetail-hasil');
+    Route::get('pollingdetail-hasil-detail-user', [PollingDetailContorller::class, 'hasilUser'])->name('pollingdetail-hasil-detail-user');
 
 });
 

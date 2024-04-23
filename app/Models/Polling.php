@@ -10,7 +10,7 @@ class Polling extends Model
     use HasFactory;
 
     protected $table = 'polling';
-
+    public $incrementing = false;
     protected $fillable = [
         'id',
         'status',

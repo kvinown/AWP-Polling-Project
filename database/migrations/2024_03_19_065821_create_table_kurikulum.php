@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('kurikulum', function (Blueprint $table) {
             $table->string('id', 10)->primary();
             $table->integer('tahun');
-            $table->integer('semester');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
         });
@@ -23,12 +22,10 @@ return new class extends Migration
             [
                 'id' => 1,
                 'tahun' => 2022,
-                'semester'=> 4
             ],
             [
                 'id' => 2,
                 'tahun' => 2022,
-                'semester'=> 2
             ]
         ]);
     }

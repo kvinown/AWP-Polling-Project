@@ -11,6 +11,7 @@ class ProgramStudi extends Model
     use HasFactory;
 
     protected $table = 'program_studi';
+    public $incrementing = false;
 
     protected $fillable = [
         'id',

@@ -12,6 +12,8 @@
         rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
         crossorigin="anonymous" />
+    <!-- Bootstrap Datepicker CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link
         rel="stylesheet"
@@ -36,7 +38,7 @@
             background-color: #D9D9D9;
             border-radius: 15px;
             padding: 20px;
-            margin-top: 440px;
+            margin-top: 200px;
             margin-bottom: 20px;
         }
         h6 {
@@ -67,6 +69,18 @@
 @include('layouts.navbar')
 <!-- End Navbar -->
 
+@if(session('success'))
+    <div class="position-fixed top-10 start-50 translate-middle" style="z-index: 11">
+        <div id="toast" class="toast align-items-center text-white bg-success" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    {{ session('success') }}
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+@endif
 
 <!-- Content -->
 @yield('web-content')
@@ -79,5 +93,20 @@
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
+<!-- jQuery (required for Bootstrap Datepicker) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Bootstrap Datepicker JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<script>
+    // Inisialisasi toast menggunakan JavaScript
+    var toastEl = document.getElementById('toast');
+    var toast = new bootstrap.Toast(toastEl);
+
+    // Tampilkan toast jika session success ada
+    if ("{{ session('success') }}") {
+        toast.show();
+    }
+</script>
+
 </body>
 </html>

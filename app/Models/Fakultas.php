@@ -10,6 +10,7 @@ class Fakultas extends Model
     use HasFactory;
 
     protected $table = 'fakultas';
+    public $incrementing = false;
 
     protected $fillable = [
         'id',
