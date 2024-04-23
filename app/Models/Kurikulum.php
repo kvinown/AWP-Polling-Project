@@ -10,11 +10,11 @@ class Kurikulum extends Model
     use HasFactory;
 
     protected $table = 'kurikulum';
+    public $incrementing = false;
 
     protected $fillable = [
         'id',
         'tahun',
-        'semester'
     ];
 
     protected $primaryKey = 'id';

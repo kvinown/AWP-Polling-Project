@@ -97,7 +97,7 @@ class PollingController extends Controller
     {
         $polling ->delete();
         $nama = $polling->nama;
-        $success = "Data $nama berhasil dihapus"
+        $success = "Data $nama berhasil dihapus";
         return redirect(route('polling-index'))->with('success', $success);
     }
 }

@@ -25,25 +25,30 @@
                     href="{{route('home')}}"
                 >Home</a
                 >
-                <a
-                    class="nav-link active mx-1"
-                    href="{{route('polling-index')}}"
-                >Polling</a
-                >
+                @if(auth()->user()->id_role == '2' or auth()->user()->id_role == '3')
+                <a class="nav-link active mx-1" href="{{ route('pollingdetail-hasil-detail-user') }}">Hasil Detail User</a>
+                @if(auth()->user()->id_role == '2')
                 <a class="nav-link active mx-1" href="{{ route('pollingdetail-hasil') }}">Hasil</a>
+                    @elseif(auth()->user()->id_role == '1')
                 <a class="nav-link active mx-1" href="{{ route('pollingdetail-index') }}">Polling Mata Kuliah</a>
-                @if(auth()->user()->id_role == '1')
+                @endif
+                @endif
+                @if(auth()->user()->id_role == '1' or auth()->user()->id_role == '2')
                 <div class="dropdown">
                     <a class="nav-link active mx-1 dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                         Menu
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <li><a class="dropdown-item" href="{{ route('fakultas-index') }}">Fakultas</a></li>
-                        <li><a class="dropdown-item" href="{{ route('programstudi-index') }}">Program Studi</a></li>
+                        @if(auth()->user()->id_role == '2')
                         <li><a class="dropdown-item" href="{{ route('kurikulum-index') }}">Kurikulum</a></li>
                         <li><a class="dropdown-item" href="{{ route('matakuliah-index') }}">Mata Kuliah</a></li>
+                        <li><a class="dropdown-item" href="{{ route('polling-index') }}">Polling</a></li>
+                        @elseif(auth()->user()->id_role == '1')
+                        <li><a class="dropdown-item" href="{{ route('fakultas-index') }}">Fakultas</a></li>
+                        <li><a class="dropdown-item" href="{{ route('programstudi-index') }}">Program Studi</a></li>
                         <li><a class="dropdown-item" href="{{ route('user-index') }}">User</a></li>
                         <li><a class="dropdown-item" href="{{ route('role-index') }}">Role</a></li>
+                        @endif
                     </ul>
                 </div>
                 @endif

@@ -34,12 +34,10 @@ class KurikulumController extends Controller
         $validedData = validator($request->all(), [
             'id' => 'required|string|max:10|unique:kurikulum',
             'tahun' => 'required|integer',
-            'semester' => 'required|integer',
         ], [
             'id.unique' => 'ID Kurikulum sudah terdaftar',
             'id.required' => 'ID Kurikulum harus diisi',
             'tahun.required' => 'Tahun Kurikulum harus diisi',
-            'semester.required' => 'Semester Kurikulum harus diisi',
         ])->validate();
 
         $kurikulum = new Kurikulum($validedData);
@@ -74,10 +72,8 @@ class KurikulumController extends Controller
     {
         $validatedData = validator($request->all(), [
             'tahun' => 'required|integer',
-            'semester' => 'required|integer',
         ], [
             'tahun.required' => 'Tahun Kurikulum harus diisi',
-            'semester.required' => 'Semester Kurikulum harus diisi',
         ])->validate();
 
         $kurikulum->update($validatedData);
