@@ -8,9 +8,7 @@
         <div class="container">
             <div class="row d-block text-dark">
                 <div class="col-md text-center">
-
                     <img class="login-button" src="img/Button Login.png" alt="Login Button">
-
                 </div>
             </div>
         </div>
