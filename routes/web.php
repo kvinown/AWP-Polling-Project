@@ -146,6 +146,7 @@ Route::middleware(['auth', '3'])->group(function () {
 
     // Polling Detail
     Route::get('pollingdetail-index', [PollingDetailContorller::class, 'index'])->name('pollingdetail-index');
+    Route::get('pollingdetail-create', [PollingDetailContorller::class, 'create'])->name('pollingdetail-create');
     Route::post('pollingdetail-create', [PollingDetailContorller::class, 'create'])->name('pollingdetail-create');
     Route::post('pollingdetail-store', [PollingDetailContorller::class, 'store'])->name('pollingdetail-store');
     Route::get('pollingdetail-delete/{pollingDetail}', [PollingDetailContorller::class, 'destroy'])->name('pollingdetail-delete');
@@ -153,7 +154,7 @@ Route::middleware(['auth', '3'])->group(function () {
     Route::post('pollingdetail-update/{pollingDetail}', [PollingDetailContorller::class, 'update'])->name('pollingdetail-update');
 
     // Hasil
-    Route::get('pollingdetail-hasil-detail/{id_mata_kuliah}', [PollingDetailContorller::class, 'hasilDetail'])->name('pollingdetail-hasil-detail');
+    Route::get('hasil-detail/{id_mata_kuliah}', [PollingDetailContorller::class, 'hasilDetail'])->name('hasil-detail');
 
 });
 

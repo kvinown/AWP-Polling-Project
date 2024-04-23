@@ -12,18 +12,18 @@
                 </div>
             @endif
             <div class="card p-4">
-                <form action="{{route('fakultas-update', ['fakultas' => $fak->id])}}" method="post">
+                <form action="{{route('role-update',['role' => $role -> id])}}" method="post">
                     @csrf
                     <div class="card-body">
                         {{-- ID Role --}}
                         <div class="form-group">
-                            <label for="id">ID Fakultas</label>
-                            <input class="my-2 form-control" type="text" name="id" id="id" placeholder="ID Fakultas" required autofocus maxlength="10" readonly value="{{$fak->id}}">
+                            <label for="id">ID Role</label>
+                            <input class="my-2 form-control" type="text" name="id" id="id" placeholder="ID Role" required autofocus maxlength="10"  readonly value="{{$role->id}}">
                         </div>
                         {{-- Nama Role --}}
                         <div class="form-group">
-                            <label for="nama">Nama Fakultas</label>
-                            <input class="my-2 form-control" type="text" name="nama" id="nama" placeholder="Nama Fakultas" required autofocus maxlength="100" value="{{$fak->nama}}">
+                            <label for="nama">Nama Role</label>
+                            <input class="my-2 form-control" type="text" name="nama" id="nama" placeholder="Nama Role" autofocus maxlength="100" value="{{$role->nama}}">
                         </div>
                     </div>
                     <div class="card-footer">

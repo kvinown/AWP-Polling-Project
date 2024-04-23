@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Kurikulum;
 use App\Models\MataKuliah;
 use App\Models\Polling;
@@ -23,38 +24,19 @@ class PollingDetailContorller extends Controller
         $id_user = auth()->user()->id;
 
         // Dapatkan semua ID polling yang ada di tabel PollingDetail
-        $id_pollings = PollingDetail::distinct('id_polling')->pluck('id_polling');
+        $pollingDetailExists = PollingDetail::where('id_user', $id_user)->exists();
+        $pol = PollingDetail::all();
 
-        // Inisialisasi variabel untuk menandai keberadaan entri PollingDetail untuk setiap ID polling
-        $allPollingsExist = true;
-
-        // Dapatkan semua polling
-        $pollings = Polling::all();
-
-        // Iterasi melalui setiap ID polling
-        foreach ($id_pollings as $id_polling) {
-            // Periksa keberadaan entri dalam PollingDetail untuk ID pengguna dan ID polling saat ini
-            $pollingDetailExists = PollingDetail::where('id_user', $id_user)
-                ->where('id_polling', $id_polling)
-                ->exists();
-
-            // Jika tidak ada entri yang ditemukan untuk ID pengguna dan ID polling saat ini
-            // Atau jika polling tidak valid karena statusnya false atau di luar rentang tanggal
-            // Atur $allPollingsExist menjadi false
-            if (!$pollingDetailExists || !$pollings->firstWhere('id', $id_polling)->status ||
-                !now()->between($pollings->firstWhere('id', $id_polling)->started_date, $pollings->firstWhere('id', $id_polling)->ended_date)) {
-                $allPollingsExist = false;
-                break; // Keluar dari loop karena tidak perlu lagi memeriksa polling berikutnya
-            }
+        if ($pollingDetailExists) {
+            $pollingValid = false;
+        } else {
+            $pollingValid = true;
         }
 
-        // Polling menjadi valid jika setiap ID polling memiliki entri dalam PollingDetail untuk ID pengguna tertentu
-        // dan setiap polling memiliki status true dan berada dalam rentang tanggal yang tepat
-        $pollingValid = $allPollingsExist;
-
+//        dd($id_user, $pollingValid, $pollingDetailExists, $pol);
         return view('polling_detail.index', [
             'pollingValid' => $pollingValid,
-            'pols' => $pollings,
+            'pols' => Polling::all(),
             'pds' => PollingDetail::all(),
             'users' => User::all(),
             'mks' => MataKuliah::all(),
@@ -138,9 +120,6 @@ class PollingDetailContorller extends Controller
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $validatedData = $request->validate([
@@ -150,6 +129,18 @@ class PollingDetailContorller extends Controller
 
         $id_user = auth()->user()->id;
         $id_polling = $request->input('id_polling');
+
+        $total_sks = 0;
+        foreach ($validatedData['matakuliah'] as $matakuliahId) {
+            $matakuliah = MataKuliah::find($matakuliahId);
+            $sks = $matakuliah->sks;
+            $total_sks += $sks; // Menambahkan SKS ke total
+        }
+
+        if ($total_sks > 9) {
+            return redirect()->route('pollingdetail-index')->withErrors(['sks' => 'Total SKS melebihi 9.']);
+        }
+
 
         $inc = 0;
         foreach ($validatedData['matakuliah'] as $matakuliahId) {
@@ -169,6 +160,7 @@ class PollingDetailContorller extends Controller
         $success = "Data Polling $nama berhasil di input";
         return redirect(route('pollingdetail-hasil-detail-user'))->with('success', $success);
     }
+
 
 
 

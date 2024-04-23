@@ -22,8 +22,7 @@
                         <tr>
                             <th scope="col">ID Kurikulum</th>
                             <th scope="col">Tahun kurikulum</th>
-                            <th scope="col">Semester kurikulum</th>
-                            @if(auth()->user()->id_role == '1')
+                            @if(auth()->user()->id_role == '2')
                             <th scope="col">Delete</th>
                             <th scope="col">Edit</th>
                             @endif
@@ -34,8 +33,7 @@
                             <tr>
                                 <td>{{$kur->id}}</td>
                                 <td>{{$kur->tahun}}</td>
-                                <td>{{$kur->semester}}</td>
-                                @if(auth()->user()->id_role == '1')
+                                @if(auth()->user()->id_role == '2')
                                 <td>
                                     <a href="{{ route('kurikulum-delete', ['kurikulum' => $kur->id]) }}" role="button" class="btn btn-danger" onclick="return confirmDelete()">
                                         <i class="fas fa-trash"></i>

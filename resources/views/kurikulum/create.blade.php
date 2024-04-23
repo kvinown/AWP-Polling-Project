@@ -25,11 +25,6 @@
                             <label for="tahun">Tahun Kurikulum</label>
                             <input class="my-2 form-control" type="number" name="tahun" id="tahun" placeholder="Tahun Kurikulum" autofocus>
                         </div>
-                        {{-- Semester Kurikulum --}}
-                        <div class="form-group">
-                            <label for="semester">Semester Kurikulum</label>
-                            <input class="my-2 form-control" type="number" name="semester" id="semester" placeholder="Semester Kurikulum" autofocus>
-                        </div>
                     </div>
                     <div class="card-footer">
                         {{-- Submit --}}

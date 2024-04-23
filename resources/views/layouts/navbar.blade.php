@@ -29,7 +29,7 @@
                 <a class="nav-link active mx-1" href="{{ route('pollingdetail-hasil-detail-user') }}">Hasil Detail User</a>
                 @if(auth()->user()->id_role == '2')
                 <a class="nav-link active mx-1" href="{{ route('pollingdetail-hasil') }}">Hasil</a>
-                    @elseif(auth()->user()->id_role == '1')
+                    @elseif(auth()->user()->id_role == '3')
                 <a class="nav-link active mx-1" href="{{ route('pollingdetail-index') }}">Polling Mata Kuliah</a>
                 @endif
                 @endif

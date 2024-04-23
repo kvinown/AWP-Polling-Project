@@ -25,7 +25,7 @@
                             <th scope="col">SKS Mata Kuliah</th>
                             <th scope="col">Kurikulum</th>
                             <th scope="col">Program Studi</th>
-                            @if(auth()->user()->id_role == '1')
+                            @if(auth()->user()->id_role == '2')
                             <th scope="col">Delete</th>
                             <th scope="col">Edit</th>
                             @endif
@@ -39,7 +39,7 @@
                                 <td>{{$mk->sks}}</td>
                                 <td>{{$mk->Kurikulum->tahun}}</td>
                                 <td>{{$mk->programStudi->nama}}</td>
-                                @if(auth()->user()->id_role == '1')
+                                @if(auth()->user()->id_role == '2')
                                 <td>
                                     <a href="{{ route('matakuliah-delete', ['mataKuliah' => $mk->id]) }}" role="button" class="btn btn-danger" onclick="return confirmDelete()">
                                         <i class="fas fa-trash"></i>

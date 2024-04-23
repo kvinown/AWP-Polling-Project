@@ -21,6 +21,7 @@
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous"
         referrerpolicy="no-referrer" />
+    @yield('css-home')
     <style>
         .footer-icon-size {
             font-size: 2em;
@@ -48,13 +49,6 @@
         ul {
             padding-inline-start: 20px;
         }
-         .content {
-             background-image: url("img/BG PWL.png");
-             background-size: cover; /* Ensures image covers the entire container */
-             background-repeat: no-repeat; /* Prevents image tiling */
-             background-position: center; /* Centers image horizontally */
-             position: relative; /* Allows absolute positioning of elements within */
-         }
         .login-button {
             width: 200px    ;
             position: absolute; /* Positions button absolutely within the content section */

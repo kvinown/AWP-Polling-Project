@@ -25,7 +25,7 @@ return new class extends Migration
             ],
             [
                 'id' => 2,
-                'tahun' => 2022,
+                'tahun' => 2023,
             ]
         ]);
     }

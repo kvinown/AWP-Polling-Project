@@ -8,7 +8,7 @@
         <div class="container">
             <div class="card">
                 <div class="row d-flex">
-                    <h5 class="card-title col-md">Data Polling Detail {{$nama_pol}}</h5>
+                    <h5 class="card-title col-md">Data Polling Detail {{ $nama_pol }}</h5>
                     <a href="{{ route('pollingdetail-create') }}" class="col-md-1 btn btn-primary ms-auto">
                         Tambah
                     </a>

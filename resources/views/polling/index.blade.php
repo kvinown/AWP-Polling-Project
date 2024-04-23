@@ -25,7 +25,7 @@
                             <th scope="col">Tanggal Mulai</th>
                             <th scope="col">Tanggal Selesai</th>
                             <th scope="col">Status Polling</th>
-                            @if(auth()->user()->id_role == '1')
+                            @if(auth()->user()->id_role == '2')
                             <th scope="col">Delete</th>
                             <th scope="col">Edit</th>
                             @endif
@@ -39,7 +39,7 @@
                                 <td>{{$pol->started_date}}</td>
                                 <td>{{$pol->ended_date}}</td>
                                 <td>{{$pol->status}}</td>
-                                @if(auth()->user()->id_role == '1')
+                                @if(auth()->user()->id_role == '2')
                                 <td>
                                     <a href="{{ route('polling-delete', ['polling' => $pol->id]) }}" role="button" class="btn btn-danger" onclick="return confirmDelete()">
                                         <i class="fas fa-trash"></i>

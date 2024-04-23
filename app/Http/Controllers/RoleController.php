@@ -42,7 +42,7 @@ class RoleController extends Controller
 
         $role = new Role($validatedData);
         $role->save();
-        $nama = $validedData['nama'];
+        $nama = $validatedData['nama'];
         $success = "Data $nama berhasil ditambah";
         return redirect(route('role-index'))->with('success', $success);
     }
@@ -60,7 +60,9 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
-        //
+        return view('role.edit', [
+            'role' => $role,
+        ]);
     }
 
     /**
@@ -68,7 +70,17 @@ class RoleController extends Controller
      */
     public function update(Request $request, Role $role)
     {
-        //
+        $validatedData = validator($request->all(), [
+            'nama' => 'required|string|max:100',
+        ], [
+            'nama.required' => 'Nama Role harus diisi',
+        ])->validate();
+
+        $role->update($validatedData);
+
+        $nama = $validatedData['nama'];
+        $success = "Data $nama berhasil diupdate";
+        return redirect(route('role-index'))->with('success', $success);
     }
 
     /**
